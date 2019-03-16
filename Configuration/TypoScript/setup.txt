@@ -1,0 +1,48 @@
+# for fluid_styled_content
+[userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('fluid_styled_content')]
+  lib.contentElement {
+     templateRootPaths {
+        5484 = EXT:skvideo/Resources/Private/Templates/
+     }
+  }
+
+  tt_content {
+     skvideo_ce =< lib.contentElement
+     skvideo_ce {
+      templateName = Skvideo
+
+     }
+   # dataProcessing {
+   #    1 = Skar\Skvideo\DataProcessing\SkvideoProcessor
+   #    1 {
+   #       useHere = theConfigurationOfTheDataProcessor
+   #    }
+   # }
+  }
+[global]
+
+# for css_styled_content
+[userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('css_styled_content')]
+  tt_content.skvideo_ce = FLUIDTEMPLATE
+  tt_content.skvideo_ce {
+    templateName = Skvideo
+     templateRootPaths {
+        5484 = EXT:skvideo/Resources/Private/Templates/
+     }
+  }
+[global]
+
+
+
+
+page.includeCSS.skvideo = EXT:skvideo/Resources/Public/Css/styles.css
+page.includeJS.skvideo = EXT:skvideo/Resources/Public/Js/scripts.js
+
+plugin.tx_skvideo {
+    settings {
+        message = Αν συνεχίσεις bla bla blab bla bla blab bla bla blab bla bla blab bla bla blab bla bla blab bla bla blab bla bla blab 11message message message message message <b>with <span style="color:yellow">markup</span></b>
+        rememberme = Να θυμάμαι αυτή την επιλογή με χρήση cookie
+        cancel = Άκυρο
+        continue = Συνέχεια
+    }
+}

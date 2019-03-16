@@ -1,0 +1,70 @@
+ <T3DataStructure>
+	 <meta type="array">
+		 <langChildren>0</langChildren>
+		 <langDisable>1</langDisable>
+	 </meta>
+	 <sheets>
+		 <sDEF>
+			 <ROOT>
+                <TCEforms>
+                    <sheetTitle>Options</sheetTitle>
+                </TCEforms>
+			 	<type>array</type>
+				 <el>
+					<settings.type>
+						<TCEforms>
+							<label>Video type</label>
+							<config>
+								<type>select</type>
+								<itemsProcFunc>Skar\Skvideo\ItemsProcFunc->user_getVideoTypeList</itemsProcFunc>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.type>
+					<settings.sizeratio>
+						<TCEforms>
+							<label>Size ratio</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0">4:3</numIndex>
+										<numIndex index="1">43</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">16:9</numIndex>
+										<numIndex index="1">169</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.sizeratio>
+
+					<settings.maxwidth>
+						<TCEforms>
+							<label>Max width in pixel</label>
+							<config>
+								<type>input</type>
+								<size>6</size>
+								<eval>int</eval>
+								<!--<range>
+									<lower>100</lower>
+								</range>-->
+								<default></default>
+							</config>
+						</TCEforms>
+					</settings.maxwidth>
+				 </el>
+			 </ROOT>
+		</sDEF>
+
+	</sheets>
+ </T3DataStructure>
+ 

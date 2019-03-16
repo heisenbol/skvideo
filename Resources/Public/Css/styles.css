@@ -1,0 +1,88 @@
+.sk-video-supercontainer {
+	margin-left:auto;
+	margin-right:auto
+}
+.sk-video-container img {
+	display:block;
+	width:100%;
+}
+.sk-video-container {
+	position: relative;
+	height: 0; 
+	overflow: hidden;
+}
+.sk-video-container.ratio169 {
+	padding-bottom: 56.25%;
+	
+	display:block;
+}
+.sk-video-container.ratio43 {
+	padding-bottom: 75%;
+	display:block;
+}
+.sk-video-container iframe,
+.sk-video-container object,
+.sk-video-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border:0;
+}
+
+.sk-video-playbutton {
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	cursor:pointer;
+	background: rgba(0,0,0,0.4) url(../Icons/player_icon.svg) no-repeat center; 
+	
+	background-size: 20%;
+	
+	transition: transform .15s ease-out;
+}
+.sk-video-playbutton:hover {
+	transform: scale(1.04);
+}
+
+
+.sk-video-modal {
+	height: 100%;
+	width:100%;
+	position: fixed;
+	z-index: 101;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0, 0.9);
+	overflow-y: auto;
+	overflow-x: hidden;
+	text-align: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.5s, visibility 0s 0.5s;
+	color:red;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+.sk-video-modal div:first-child {
+	max-width:500px;
+	width:90%;
+}
+.sk-video-modal.active {
+  	opacity: 1;
+  	visibility: visible;
+  	transition: opacity 0.5s;
+}
+
+.sk-video-modal .disclaimer {
+	display:block;
+	margin-bottom:1em;
+}
+.sk-video-modal label {
+	margin-bottom:1em;
+	display:block;
+}
