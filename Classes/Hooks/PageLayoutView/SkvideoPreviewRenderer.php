@@ -53,24 +53,26 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
         }
 
         $helper = new Helper();
-        $imgPath = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_BE); // for BE I can't get a url. I just get the absolute file path of the iage
+        $imgPath = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_BE);
 
-        // Festlegen der Template-Datei
+        // Set template file
         /** @var \TYPO3\CMS\Fluid\View\StandaloneView $fluidTemplate */
+        $platformLink = '';
+        if ($type == Helper::TYPE_YOUTUBE) {
+          $platformLink = "https://www.youtube.com/watch?v=".htmlspecialchars($code);
+        }
+        if ($type == Helper::TYPE_VIMEO) {
+          $platformLink = "https://vimeo.com/".htmlspecialchars($code);
+        }
+
         $fluidTmplFilePath = GeneralUtility::getFileAbsFileName('typo3conf/ext/skvideo/Resources/Private/Templates/BePreviewTemplate.html');
         $fluidTmpl = GeneralUtility::makeInstance('TYPO3\CMS\Fluid\View\StandaloneView');
         $fluidTmpl->setTemplatePathAndFilename($fluidTmplFilePath);
         $fluidTmpl->assign('type', $type);
-        $fluidTmpl->assign('code', $code);
+        $fluidTmpl->assign('platformLink', $platformLink);
         $fluidTmpl->assign('imgPath', $imgPath);
 
         $itemContent = $parentObject->linkEditContent($fluidTmpl->render(), $row);
-
-/*
-        $itemContent .= '<p>Video type:'.$type.'</p>';
-        $itemContent .= '<p>Code:'.$code.'</p>';
-        //$itemContent .= '<p>imgSrc:'.$imgSrc.'</p>';
-        $itemContent .= '<p>Auto play:'.($autoplay?'Yes':'No').'</p>';*/
       }
    }
 }
