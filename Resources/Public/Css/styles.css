@@ -56,14 +56,13 @@
 	z-index: 101;
 	top: 0;
 	left: 0;
-	background-color: rgba(0,0,0, 0.9);
+	background-color: rgba(0,0,0, 0.7);
 	overflow-y: auto;
 	overflow-x: hidden;
 	text-align: center;
 	visibility: hidden;
 	opacity: 0;
 	transition: opacity 0.5s, visibility 0s 0.5s;
-	color:red;
 	display:flex;
 	align-items: center;
 	justify-content: center;
@@ -71,6 +70,10 @@
 .sk-video-modal div:first-child {
 	max-width:500px;
 	width:90%;
+	color:black;
+	background-color:white;
+	border:1px solid black;
+	padding:1em;
 }
 .sk-video-modal.active {
   	opacity: 1;
@@ -81,6 +84,10 @@
 .sk-video-modal .disclaimer {
 	display:block;
 	margin-bottom:1em;
+	
+	padding:1em 0;
+	max-height:50px;
+	overflow: auto;
 }
 .sk-video-modal label {
 	margin-bottom:1em;

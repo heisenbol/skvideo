@@ -40,9 +40,11 @@ page.includeJS.skvideo = EXT:skvideo/Resources/Public/Js/scripts.js
 
 plugin.tx_skvideo {
     settings {
-        message = Αν συνεχίσεις bla bla blab bla bla blab bla bla blab bla bla blab bla bla blab bla bla blab bla bla blab bla bla blab 11message message message message message <b>with <span style="color:yellow">markup</span></b>
-        rememberme = Να θυμάμαι αυτή την επιλογή με χρήση cookie
-        cancel = Άκυρο
-        continue = Συνέχεια
+        message (
+          This video is served by Youtube or Vimeo company. If you continue, the company will be able to track information about you  <b>with <span style="color:red">markup</span></b>
+        )
+        rememberme = Remember my decision for 30 days using a cookie
+        cancel = Cancel
+        continue = Agree and view video
     }
 }
