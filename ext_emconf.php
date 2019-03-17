@@ -2,7 +2,7 @@
 $EM_CONF[$_EXTKEY] = [
     'title' => 'SK Video Content Element',
     'description' => 'Responsive Youtube and Vimeo Embed',
-    'category' => 'plugin',
+    'category' => 'fe',
     'author' => 'Stefanos Karasavvidis',
     'author_email' => 'sk@karasavvidis.gr',
     'state' => 'beta',
