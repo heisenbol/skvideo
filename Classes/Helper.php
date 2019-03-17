@@ -10,7 +10,7 @@ class Helper
   const TYPE_YOUTUBE = 'YOUTUBE';
   const TYPE_VIMEO = 'VIMEO';
   const FILE_PREFIX_YOUTUBE = 'yt_';
-  const FILE_PREFIX_VIMEO = 'yt_';
+  const FILE_PREFIX_VIMEO = 'vi_';
 
   const CONTEXT_BE = 'BE';
   const CONTEXT_FE = 'FE';
@@ -27,7 +27,18 @@ class Helper
   private function getPreviewImageUrlYoutube($code, $context) {
 
     $url = "https://img.youtube.com/vi/$code/maxresdefault.jpg";
-    $retrieveResult = $this->retrieveThumbImage($url, $code, self::FILE_PREFIX_YOUTUBE);
+    return $this->retrieveImage($url, $code, $context, self::FILE_PREFIX_YOUTUBE);
+  }
+  private function getPreviewImageUrlVimeo($code, $context) {
+    $apiUrl = "https://vimeo.com/api/v2/video/$code.json";
+    $json = file_get_contents($apiUrl);
+    $decoded = json_decode($json,true);
+    $url = $decoded[0]['thumbnail_large']??null;
+    return $this->retrieveImage($url, $code, $context, self::FILE_PREFIX_YOUTUBE);
+
+  }
+  private function retrieveImage($url, $code, $context, $filePrefix) {
+    $retrieveResult = $this->retrieveThumbImage($url, $code, $filePrefix);
     if ($retrieveResult === false) {
       return false;
     }
@@ -36,15 +47,11 @@ class Helper
     if ($context === self::CONTEXT_FE) {
       $maxWidth = 500;
       $maxHeight = 500;
-      return $this->getImageUrl($this->getAbsoluteFilePath($code, self::FILE_PREFIX_YOUTUBE), $maxWidth, $maxHeight, 90);
+      return $this->getImageUrl($this->getAbsoluteFilePath($code, $filePrefix), $maxWidth, $maxHeight, 90);
     }
     else {
-      return $this->getAbsoluteFilePath($code, self::FILE_PREFIX_YOUTUBE);
+      return $this->getAbsoluteFilePath($code, $filePrefix);
     }
-  }
-  private function getPreviewImageUrlVimeo($code, $context) {
-    return 'vm src';
-
   }
   private function getPreviewImageUrlNoImage() {
     return 'noimage src';

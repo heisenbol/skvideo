@@ -34,7 +34,7 @@ $GLOBALS['TCA']['tt_content']['types']['skvideo_ce'] = array(
    ',
    'columnsOverrides' => [
       'bodytext' => [
-         'label' => 'Youtube Video Code',
+         'label' => 'Youtube/Vimeo Video Code',
          'config' => [
          	'type'=>'input',
             'enableRichtext' => false
