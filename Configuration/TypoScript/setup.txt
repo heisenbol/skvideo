@@ -41,10 +41,22 @@ page.includeJS.skvideo = EXT:skvideo/Resources/Public/Js/scripts.js
 plugin.tx_skvideo {
     settings {
         message (
-          This video is served by Youtube or Vimeo company. If you continue, the company will be able to track information about you  <b>with <span style="color:red">markup</span></b>
+          The videos of this site are served on YouTube or Vimeo Company. If you continue, the company will be able to track information about you (e.g. your IP, your viewing behavior etc)
         )
         rememberme = Remember my decision for 30 days using a cookie
         cancel = Cancel
-        continue = Agree and view video
+        continue = I agree, show the video
     }
 }
+
+#message:
+#Τα βίντεο αυτού του ιστότοπου φιλοξενούνται στην εταιρεία YouTube ή στην εταιρεία Vimeo. Εάν συνεχίσετε, η εταιρεία θα είναι σε θέση να παρακολουθεί πληροφορίες σχετικά με εσάς (π.χ. την  IP σας, τις προτιμήσεις σας κλπ)
+#
+#rememberme:
+#Το πρόγραμμα περιήγησης να θυμάται την απόφασή μου για 30 ημέρες χρησιμοποιώντας ένα cookie
+#
+#Cancel:
+#Ακύρωση
+#
+#Continue:
+#Συμφωνώ, προβολή του βίντεο
