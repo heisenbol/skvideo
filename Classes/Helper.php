@@ -2,6 +2,7 @@
 namespace Skar\Skvideo;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Core\Cache\CacheManager;
 /**
  * Contains a preview rendering for the page module of CType="skvideo_skvideo_ce"
  */
@@ -14,11 +15,64 @@ class Helper
 
   const CONTEXT_BE = 'BE';
   const CONTEXT_FE = 'FE';
+
+  const TITLES_CACHE_NAME = 'skvideo_titlescache';
+  const CACHE_PREFIX = 'TITLES';
+  private const CACHE_TAG = 'skvideo';
+
+  private function getTitlesCacheKey($code, $type) {
+    return self::CACHE_PREFIX.$code.'_'.$type;
+  }
+  public function getTitles($code, $type) {
+    $cacheIdentifier = $this->getTitlesCacheKey($code, $type);
+    $cache = GeneralUtility::makeInstance(CacheManager::class)->getCache(self::TITLES_CACHE_NAME);
+    if (($titles = $cache->get($cacheIdentifier)) === FALSE) {
+      if ($type == self::TYPE_YOUTUBE) {
+        $titles = $this->getTitlesYoutube($code);
+      }
+      else if ($type == self::TYPE_VIMEO) {
+        $titles = $this->getTitlesVimeo($code);
+      }
+      if ($titles) {
+        $cache->set($cacheIdentifier, $titles, [self::CACHE_TAG], \Skar\Skvideo\ExtensionConfiguration::getSetting('titleslifetime',1209600));
+      }
+
+    }
+    return $titles;
+  }
+
+  private function getTitlesYoutube($code) {
+    $oembedUrl = 'https://www.youtube.com/oembed?url=http%3A//youtube.com/watch%3Fv%3D'.$code.'&format=json';
+    return $this->retrieveTitles($oembedUrl);
+  }
+  private function getTitlesVimeo($code) {
+    $oembedUrl = 'https://vimeo.com/api/oembed.json?url=https://vimeo.com/'.$code;
+    return $this->retrieveTitles($oembedUrl);
+  }
+  private function retrieveTitles($oembedUrl) {
+    $decoded = $this->retrieveJsonUrl($oembedUrl);
+    if (!$decoded) {
+      return null;
+    }
+    $title = $decoded['title']??null;
+    $author = $decoded['author_name']??null;
+
+    if ($title) {
+      return ['title'=>$title, 'author'=>$author];
+    }
+    return null;
+  }
+  private function retrieveJsonUrl($url) {
+    $json = @file_get_contents($url);
+    $decoded = @json_decode($json,true);
+    return $decoded;
+  }
+
   public function getPreviewImageUrl($code, $type, $context) {
-    if ($type == 'YOUTUBE') {
+    if ($type == self::TYPE_YOUTUBE) {
       return $this->getPreviewImageUrlYoutube($code, $context);
     }
-    if ($type == 'VIMEO') {
+    if ($type == self::TYPE_VIMEO) {
       return $this->getPreviewImageUrlVimeo($code, $context);
     }
     return $this->getPreviewImageUrlNoImage();
@@ -85,7 +139,8 @@ class Helper
         return false;
       }
     }
-    if (file_exists($dst)) { // already downloaded
+    $imagesLifeTime = \Skar\Skvideo\ExtensionConfiguration::getSetting('imageslifetime',1209600);
+    if (file_exists($dst) && (filemtime($dst) + $imagesLifeTime > time()) ) { // already downloaded and lifetime has not passed yet
       $this->log("tx_skvideo $dst already exists ");
       return true; 
     }

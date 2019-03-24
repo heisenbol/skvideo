@@ -27,6 +27,8 @@ class VideoMarkupViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
         }
 
         $type = $settings['type'] ?? null;
+        $includetitles = $settings['includetitles'] ?? null;
+
         $code = trim($row['bodytext'] ?? '');
         if (!$type) {
           return 'Missing video type';
@@ -37,6 +39,18 @@ class VideoMarkupViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
 
         $helper = new Helper();
         $imgSrc = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_FE); 
+
+        $titlesMarkup = '';
+        $hoverTitleEscaped = '';
+        if ($includetitles) {
+            $titles = $helper->getTitles($code, $type); 
+            $videoTitle = $titles['title']??null;
+            $videoAuthor = $titles['author']??null;
+            if ($videoTitle && $videoAuthor) {
+                $hoverTitleEscaped = htmlspecialchars($videoTitle, ENT_QUOTES, "UTF-8" ).', '.htmlspecialchars($videoAuthor, ENT_QUOTES, "UTF-8" );
+                $titlesMarkup = '<div class="sk-video-titlecontainer" title="'.$hoverTitle.'">'.htmlspecialchars($videoTitle, ENT_QUOTES, "UTF-8" ).'</div>';
+            }
+        }
 
         $ratio = $settings['sizeratio'] ?? 43;
         $maxWidth = intval($settings['maxwidth'] ?? 0);
@@ -57,7 +71,7 @@ class VideoMarkupViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
             $maxWidth = $maxWidth.'px';
         }
 
-        $previewImageMarkup = '<img src="'.$imgSrc.'" alt="">';
+        $previewImageMarkup = '<img src="'.$imgSrc.'" alt="'.$hoverTitleEscaped.'">';
         
 
         if ($ratio == 169) {
@@ -84,9 +98,9 @@ class VideoMarkupViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
         else {
             $embedMarkup = 'Unsupported video type '.htmlspecialchars($type, ENT_QUOTES, "UTF-8");
         }
-        $playButtonMarkup = "<div class='sk-video-playbutton' data-cancel='".htmlspecialchars($settings['cancel'], ENT_QUOTES, "UTF-8")."' data-continue='".htmlspecialchars($settings['continue'], ENT_QUOTES, "UTF-8")."' data-rememberme='".htmlspecialchars($settings['rememberme'], ENT_QUOTES, "UTF-8")."' data-message='".htmlspecialchars($settings['message'], ENT_QUOTES, "UTF-8")."' data-videomarkup='".htmlspecialchars($embedMarkup, ENT_QUOTES, "UTF-8")."'></div>";
+        $playButtonMarkup = "<div title='$hoverTitleEscaped' class='sk-video-playbutton' data-cancel='".htmlspecialchars($settings['cancel'], ENT_QUOTES, "UTF-8")."' data-continue='".htmlspecialchars($settings['continue'], ENT_QUOTES, "UTF-8")."' data-rememberme='".htmlspecialchars($settings['rememberme'], ENT_QUOTES, "UTF-8")."' data-message='".htmlspecialchars($settings['message'], ENT_QUOTES, "UTF-8")."' data-videomarkup='".htmlspecialchars($embedMarkup, ENT_QUOTES, "UTF-8")."'></div>";
 
-        return '<div class="sk-video-supercontainer" style="max-width:'.$maxWidth.'"><div class="sk-video-container ratio'.$ratio.'">'.$previewImageMarkup.$playButtonMarkup.'</div></div>';
+        return '<div class="sk-video-supercontainer" style="max-width:'.$maxWidth.'"><div class="sk-video-container ratio'.$ratio.'">'.$previewImageMarkup.$titlesMarkup.$playButtonMarkup.'</div></div>';
 	}
 
 }

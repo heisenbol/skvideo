@@ -1,0 +1,4 @@
+# cat=basic/enable; type=string; label=Lifetime of titles (sec)
+titleslifetime = 
+# cat=basic/enable; type=string; label=Lifetime of images (sec)
+imageslifetime = 
