@@ -141,7 +141,7 @@ class Helper
     }
     $imagesLifeTime = \Skar\Skvideo\ExtensionConfiguration::getSetting('imageslifetime',1209600);
     if (file_exists($dst) && (filemtime($dst) + $imagesLifeTime > time()) ) { // already downloaded and lifetime has not passed yet
-      $this->log("tx_skvideo $dst already exists ");
+//      $this->log("tx_skvideo $dst already exists ");
       return true; 
     }
 
