@@ -19,8 +19,11 @@ class ExtensionConfiguration
                 $backendConfiguration = unserialize($backendConfiguration);
             }
         }
-
-        return $backendConfiguration[$key]??$default;
+        $setting = $backendConfiguration[$key]??$default;
+        if ($backendConfiguration[$key]) {
+            return $backendConfiguration[$key];
+        }
+        return $default;
 
     }
 
