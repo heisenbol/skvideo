@@ -80,7 +80,11 @@ class Helper
 
   private function getPreviewImageUrlYoutube($code, $context) {
 
-    $url = "https://img.youtube.com/vi/$code/maxresdefault.jpg";
+    $url = [
+      "https://img.youtube.com/vi/$code/maxresdefault.jpg",
+      "https://img.youtube.com/vi/$code/mqdefault.jpg",
+      "https://img.youtube.com/vi/$code/default.jpg"
+    ];
     return $this->retrieveImage($url, $code, $context, self::FILE_PREFIX_YOUTUBE);
   }
   private function getPreviewImageUrlVimeo($code, $context) {
@@ -144,10 +148,18 @@ class Helper
 //      $this->log("tx_skvideo $dst already exists ");
       return true; 
     }
-
-    $file = file_get_contents($url);
+    if (!is_array($url)) {
+      $url = [$url];
+    }
+    $file = @file_get_contents($url[0]); // up to 3 urls
+    if ($file === FALSE && count($url) > 1) {
+      $file = @file_get_contents($url[1]);
+    }
+    if ($file === FALSE && count($url) > 2) {
+      $file = @file_get_contents($url[2]);
+    }
     if ($file === FALSE) {
-      $this->log("tx_skvideo could not retrieve video thumb from url ".$url);
+      $this->log("tx_skvideo could not retrieve video thumb from url(s) ".print_r($url,true));
       return false;
     }
     $saveResult = file_put_contents($dst, $file);
