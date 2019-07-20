@@ -40,12 +40,10 @@ page.includeJS.skvideo = EXT:skvideo/Resources/Public/Js/scripts.js
 
 plugin.tx_skvideo {
     settings {
-        message (
-          The videos of this site are served on YouTube or Vimeo Company. If you continue, the company will be able to track information about you (e.g. your IP, your viewing behavior etc)
-        )
-        rememberme = Remember my decision for 30 days using a cookie
-        cancel = Cancel
-        continue = I agree, show the video
+        message = {$plugin.tx_skvideo.settings.message}
+        rememberme = {$plugin.tx_skvideo.settings.rememberme}
+        cancel = {$plugin.tx_skvideo.settings.cancel}
+        continue = {$plugin.tx_skvideo.settings.continue}
     }
 }
 

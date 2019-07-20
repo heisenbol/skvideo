@@ -1,1 +1,13 @@
-
+# customsubcategory=skvideo=LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:constants_subcategory_texts
+plugin.tx_skvideo {
+    settings {
+    	# cat=content/skvideo/01; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:messagelabel
+        message = The videos of this site are served by YouTube or Vimeo. If you continue, YouTube or Vimeo will be able to track information about you (e.g. your IP, your viewing behavior etc)
+        # cat=content/skvideo/02; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:remembermelabel
+        rememberme = Remember my decision for 30 days using a cookie
+        # cat=content/skvideo/03; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:cancellabel
+        cancel = Cancel
+        # cat=content/skvideo/04; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:continuelabel
+        continue = I agree, show the video
+    }
+}
