@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var lastContainer = null;
 	var lastVideoMarkup = null;
 	var rememberCookieName = "skvideoremember";
-	console.log('initting videos');
+	//console.log('initting videos');
 	var videoElements = document.getElementsByClassName("sk-video-playbutton");
 	for (var i = 0; i < videoElements.length; i++) {
 	    videoElements[i].addEventListener('click', confirmVideo, false);
@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	    //var videoMarkup = this.getAttribute("data-videomarkup");
 	    lastContainer = findAncestor(this, 'sk-video-container');
 	    if (getCookie(rememberCookieName) == 1) {
-	    	console.log("remember we was checked, sto show the video");
+	    	//console.log("remember we was checked, sto show the video");
 	    	lastContainer.innerHTML = lastVideoMarkup;
 	    	return;
 	    }
-	    console.log(lastVideoMarkup);
+	    //console.log(lastVideoMarkup);
 	    var modalElement = document.querySelector(".sk-video-modal");
 	    if (modalElement == null) {
 	    	var rememberme = this.getAttribute("data-rememberme");
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			document.querySelector(".sk-video-modal .continue").addEventListener("click", function(){
 			  var modalElement = document.querySelector(".sk-video-modal");
 			  removeClass(modalElement, "active");
-			  console.log("Continuing");
+			  //console.log("Continuing");
 			  handleRember();
 			  lastContainer.innerHTML = lastVideoMarkup;
 			});
