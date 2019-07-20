@@ -20,8 +20,8 @@ class ExtensionConfiguration
             }
         }
         $setting = $backendConfiguration[$key]??$default;
-        if ($backendConfiguration[$key]) {
-            return $backendConfiguration[$key];
+        if ($setting) { // check here also that it is not empty
+            return $setting;
         }
         return $default;
 
