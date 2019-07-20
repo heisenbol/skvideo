@@ -21,3 +21,20 @@ If the user confirms, the video is played. In case the user had checked the chec
 The content element needs css_styled_content or fluid_styled_content in order to work. So one of these extensions must be enabled on your site.
 
 Additionally, the SK Video static template must have been included into your TYPO3 template.
+
+## Configuration
+### Texts
+You can adapt the text of the confirmation modal dialog displayed to the user via constants.
+
+`plugin.tx_skvideo.settings.message`: This is the text the user is asked to agree before viewing the video. You can use HTML markup in here.
+
+`plugin.tx_skvideo.settings.rememberme`: The text for the remember my decision checkbox
+
+`plugin.tx_skvideo.settings.cancel`: The text for the cancel button
+
+`plugin.tx_skvideo.settings.continue`: The text for the agree button
+
+### Thumbnail cache lifetime
+The extension has 2 options to control the lifetime of the preview images and the associated video texts (title etc). Essentially they control how long these should be cached. Currently both values default to 1209600 seconds which is 2 weeks.
+
+You can change these options in the extensions manager, after clicking on the extension name.
