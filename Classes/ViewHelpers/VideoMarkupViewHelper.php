@@ -48,7 +48,7 @@ class VideoMarkupViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
             $videoAuthor = $titles['author']??null;
             if ($videoTitle && $videoAuthor) {
                 $hoverTitleEscaped = htmlspecialchars($videoTitle, ENT_QUOTES, "UTF-8" ).', '.htmlspecialchars($videoAuthor, ENT_QUOTES, "UTF-8" );
-                $titlesMarkup = '<div class="sk-video-titlecontainer" title="'.$hoverTitle.'">'.htmlspecialchars($videoTitle, ENT_QUOTES, "UTF-8" ).'</div>';
+                $titlesMarkup = '<div class="sk-video-titlecontainer" title="'.$hoverTitleEscaped.'">'.htmlspecialchars($videoTitle, ENT_QUOTES, "UTF-8" ).'</div>';
             }
         }
 
