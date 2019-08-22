@@ -10,7 +10,14 @@
      skvideo_ce =< lib.contentElement
      skvideo_ce {
       templateName = Skvideo
-
+      dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      dataProcessing.10 {
+              references {
+                      table = tt_content
+                      fieldName = image
+              }
+              as = images
+      }
      }
    # dataProcessing {
    #    1 = Skar\Skvideo\DataProcessing\SkvideoProcessor
@@ -18,6 +25,7 @@
    #       useHere = theConfigurationOfTheDataProcessor
    #    }
    # }
+
   }
 [global]
 

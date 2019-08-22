@@ -3,6 +3,9 @@ namespace Skar\Skvideo;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Cache\CacheManager;
+use \TYPO3\CMS\Extbase\Service\ImageService;
+use \TYPO3\CMS\Extbase\Object\ObjectManager;
+
 /**
  * Contains a preview rendering for the page module of CType="skvideo_skvideo_ce"
  */
@@ -19,6 +22,9 @@ class Helper
   const TITLES_CACHE_NAME = 'skvideo_titlescache';
   const CACHE_PREFIX = 'TITLES';
   private const CACHE_TAG = 'skvideo';
+
+  const MAX_WIDTH = 500;
+  const MAX_HEIGHT = 500;
 
   private function getTitlesCacheKey($code, $type) {
     return self::CACHE_PREFIX.$code.'_'.$type;
@@ -78,6 +84,18 @@ class Helper
     return $this->getPreviewImageUrlNoImage();
   }
 
+  public function getCustomPreviewImageUrl($fileRef, $context) {
+    // https://rolf-thomas.de/how-to-generate-images-in-a-typo3-extbase-controller
+
+    //$imageService = GeneralUtility::makeInstance(ImageService::class);
+    $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+    $imageService= $objectManager->get(ImageService::class);
+
+    //$imagePath = $fileRef->getOriginalFile()->getPublicUrl();
+    $processedImage = $imageService->applyProcessingInstructions($fileRef, ['width' => self::MAX_WIDTH,'height' => self::MAX_HEIGHT]);
+    return $imageService->getImageUri($processedImage);
+  }
+
   private function getPreviewImageUrlYoutube($code, $context) {
 
     $url = [
@@ -100,11 +118,9 @@ class Helper
     if ($retrieveResult === false) {
       return false;
     }
-    $maxWidth = 500;
-    $maxHeight = 500;
     if ($context === self::CONTEXT_FE) {
-      $maxWidth = 500;
-      $maxHeight = 500;
+      $maxWidth = self::MAX_WIDTH;
+      $maxHeight = self::MAX_HEIGHT;
       return $this->getImageUrl($this->getAbsoluteFilePath($code, $filePrefix), $maxWidth, $maxHeight, 90);
     }
     else {

@@ -12,6 +12,7 @@ class VideoMarkupViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
     {
     	parent::initializeArguments();
         $this->registerArgument('data', 'array', 'The CE', TRUE);
+        $this->registerArgument('images', 'array', 'The images of the CE', FALSE);
     }
 
 	/**
@@ -19,6 +20,7 @@ class VideoMarkupViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
 	*/
 	public function render() {
         $row = $this->arguments['data'];
+        $customPreviewImages = $this->arguments['images']??null;
 
         $flexformService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Service\FlexFormService::class);
         $settings = $flexformService->convertFlexFormContentToArray($row['pi_flexform'])['settings']??NULL;
@@ -38,7 +40,13 @@ class VideoMarkupViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
         }
 
         $helper = new Helper();
-        $imgSrc = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_FE); 
+        if ($customPreviewImages && count($customPreviewImages) > 0) {
+            $imgSrc = $helper->getCustomPreviewImageUrl($customPreviewImages[0], Helper::CONTEXT_FE); 
+        }
+        else {
+            $imgSrc = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_FE); 
+        }
+        
 
         $titlesMarkup = '';
         $hoverTitleEscaped = '';

@@ -61,8 +61,14 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
           return;
         }
 
+        if (1==2) {
+            //$imgSrc = $helper->getCustomPreviewImageUrl($customPreviewImages[0], Helper::CONTEXT_FE); 
+        }
+        else {
+            $imgPath = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_BE);
+        }
+
         
-        $imgPath = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_BE);
 
         // Set template file
         /** @var \TYPO3\CMS\Fluid\View\StandaloneView $fluidTemplate */
