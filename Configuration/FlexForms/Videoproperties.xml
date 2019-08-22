@@ -27,15 +27,6 @@
 							</config>
 						</TCEforms>
 					</settings.type>
-					<settings.includetitles>
-						<TCEforms>
-							<label>Include video titles</label>
-							<config>
-								<type>check</type>
-								<default>1</default>
-							</config>
-						</TCEforms>
-					</settings.includetitles>
 					<settings.sizeratio>
 						<TCEforms>
 							<label>Size ratio</label>
@@ -55,6 +46,25 @@
 							</config>
 						</TCEforms>
 					</settings.sizeratio>
+					<settings.includetitles>
+						<TCEforms>
+							<label>Include video titles</label>
+							<config>
+								<type>check</type>
+								<default>1</default>
+							</config>
+						</TCEforms>
+					</settings.includetitles>
+					<settings.overridetitle>
+						<TCEforms>
+							<label>Override video title</label>
+							<config>
+								<type>input</type>
+								<default></default>
+							</config>
+						</TCEforms>
+					</settings.overridetitle>
+
 
 					<settings.maxwidth>
 						<TCEforms>

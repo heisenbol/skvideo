@@ -11,11 +11,13 @@
 );
 
 
+
 $GLOBALS['TCA']['tt_content']['types']['skvideo_ce'] = array(
    'showitem' => '
       --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
          --palette--;;general,
          --palette--;;headers,
+         image,
          bodytext,
          pi_flexform,
       --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
@@ -36,10 +38,17 @@ $GLOBALS['TCA']['tt_content']['types']['skvideo_ce'] = array(
       'bodytext' => [
          'label' => 'Youtube/Vimeo Video Code',
          'config' => [
-         	'type'=>'input',
+            'type'=>'input',
             'enableRichtext' => false
+         ],
+      ],
+      'image' => [
+         'label' => 'Custom preview image',
+         'config' => [
+            'maxitems' => 1
          ]
-      ],/*
+      ],
+      /*
       'pi_flexform' => [
          'label' => 'labeloverridepi_flexformxyz',
          'config' => [
