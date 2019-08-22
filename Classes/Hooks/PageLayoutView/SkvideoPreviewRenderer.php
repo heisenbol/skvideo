@@ -60,9 +60,20 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
           $itemContent = 'Missing video code';
           return;
         }
+        
+        $fileReferences = \TYPO3\CMS\Backend\Utility\BackendUtility::resolveFileReferences('tt_content', 'image', $row);
+        $customPreviewImage = null;
+        foreach($fileReferences as $fileReference) {
+          $customPreviewImage = $fileReference;
+          break;
+          if (!$fileReference->getHidden() && !$fileReference->getDeleted()) {
+            $customPreviewImage = $fileReference;
+            break;
+          }
+        }
+        if ($customPreviewImage) {
 
-        if (1==2) {
-            //$imgSrc = $helper->getCustomPreviewImageUrl($customPreviewImages[0], Helper::CONTEXT_FE); 
+            $imgPath = $helper->getCustomPreviewImageUrl($customPreviewImage, Helper::CONTEXT_BE); 
         }
         else {
             $imgPath = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_BE);

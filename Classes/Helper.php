@@ -85,15 +85,18 @@ class Helper
   }
 
   public function getCustomPreviewImageUrl($fileRef, $context) {
-    // https://rolf-thomas.de/how-to-generate-images-in-a-typo3-extbase-controller
-
     //$imageService = GeneralUtility::makeInstance(ImageService::class);
     $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
     $imageService= $objectManager->get(ImageService::class);
-
-    //$imagePath = $fileRef->getOriginalFile()->getPublicUrl();
-    $processedImage = $imageService->applyProcessingInstructions($fileRef, ['width' => self::MAX_WIDTH,'height' => self::MAX_HEIGHT]);
-    return $imageService->getImageUri($processedImage);
+    if ($context === self::CONTEXT_FE) {
+      // https://rolf-thomas.de/how-to-generate-images-in-a-typo3-extbase-controller
+      //$imagePath = $fileRef->getOriginalFile()->getPublicUrl();
+      $processedImage = $imageService->applyProcessingInstructions($fileRef, ['width' => self::MAX_WIDTH,'height' => self::MAX_HEIGHT]);
+      return $imageService->getImageUri($processedImage);
+    }
+    else {
+      return $fileRef->getOriginalFile()->getPublicUrl();
+    }
   }
 
   private function getPreviewImageUrlYoutube($code, $context) {
