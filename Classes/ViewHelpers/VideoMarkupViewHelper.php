@@ -43,14 +43,25 @@ class VideoMarkupViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
         $titlesMarkup = '';
         $hoverTitleEscaped = '';
         if ($includetitles) {
-            $titles = $helper->getTitles($code, $type); 
-            $videoTitle = $titles['title']??null;
-            $videoAuthor = $titles['author']??null;
-            if ($videoTitle && $videoAuthor) {
+            $videoTitle = trim($settings['overridetitle'] ?? '');
+
+            if (!$videoTitle) {
+                $titles = $helper->getTitles($code, $type); 
+                $videoTitle = $titles['title']??null;
+                $videoAuthor = $titles['author']??null;
                 $hoverTitleEscaped = htmlspecialchars($videoTitle, ENT_QUOTES, "UTF-8" ).', '.htmlspecialchars($videoAuthor, ENT_QUOTES, "UTF-8" );
+            }
+            else {
+                $hoverTitleEscaped = htmlspecialchars($videoTitle, ENT_QUOTES, "UTF-8" );
+            }
+            
+            if ($videoTitle) {
                 $titlesMarkup = '<div class="sk-video-titlecontainer" title="'.$hoverTitleEscaped.'">'.htmlspecialchars($videoTitle, ENT_QUOTES, "UTF-8" ).'</div>';
             }
         }
+
+        $overrideTitle = $settings['overridetitle'] ?? null;
+        $includeTitles = $settings['includetitles'] ?? null;
 
         $ratio = $settings['sizeratio'] ?? 43;
         $maxWidth = intval($settings['maxwidth'] ?? 0);

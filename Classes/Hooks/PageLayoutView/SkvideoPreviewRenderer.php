@@ -40,9 +40,18 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
           $itemContent = 'Missing plugin settings';
           return;
         }
-
+        $helper = new Helper();
+        $includeTitles = $settings['includetitles'] ?? null;
         $type = $settings['type'] ?? null;
         $code = trim($row['bodytext'] ?? '');
+        $title = '';
+        if ($includeTitles) {
+          $title = trim($settings['overridetitle'] ?? '');
+          if (!$title) {
+            $title = $helper->getTitles($code, $type)['title']??null; 
+          }
+        }
+
         if (!$type) {
           $itemContent = 'Missing video type';
           return;
@@ -52,7 +61,7 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
           return;
         }
 
-        $helper = new Helper();
+        
         $imgPath = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_BE);
 
         // Set template file
@@ -68,6 +77,8 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
         $fluidTmplFilePath = GeneralUtility::getFileAbsFileName('typo3conf/ext/skvideo/Resources/Private/Templates/BePreviewTemplate.html');
         $fluidTmpl = GeneralUtility::makeInstance('TYPO3\CMS\Fluid\View\StandaloneView');
         $fluidTmpl->setTemplatePathAndFilename($fluidTmplFilePath);
+        $fluidTmpl->assign('title', $title);
+        $fluidTmpl->assign('includeTitles', $includeTitles);
         $fluidTmpl->assign('type', $type);
         $fluidTmpl->assign('platformLink', $platformLink);
         $fluidTmpl->assign('imgPath', $imgPath);

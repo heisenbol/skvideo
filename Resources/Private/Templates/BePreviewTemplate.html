@@ -2,8 +2,15 @@
 
 
 Type: {type}
+<br>Title: 
+<f:if condition="{includeTitles}">
+    <f:then>{title}</f:then>
+    <f:else>
+        <span style="font-style: italic;">not shown</span>
+    </f:else>
+</f:if>
 
-
+<br>
 <a href="{platformLink}" target="_blank" title="View on Video Site"><f:image src="{imgPath}" alt="alt text" width="100" /></a>
 
 
