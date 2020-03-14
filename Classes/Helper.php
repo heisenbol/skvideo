@@ -85,13 +85,22 @@ class Helper
   }
 
   public function getCustomPreviewImageUrl($fileRef, $context) {
-    //$imageService = GeneralUtility::makeInstance(ImageService::class);
     $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
     $imageService= $objectManager->get(ImageService::class);
+    $cropString = $fileRef->getProperty('crop');
+    $cropVariantCollection = \TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection::create($cropString);
+    $cropArea = $cropVariantCollection->getCropArea('default');
     if ($context === self::CONTEXT_FE) {
       // https://rolf-thomas.de/how-to-generate-images-in-a-typo3-extbase-controller
       //$imagePath = $fileRef->getOriginalFile()->getPublicUrl();
-      $processedImage = $imageService->applyProcessingInstructions($fileRef, ['width' => self::MAX_WIDTH,'height' => self::MAX_HEIGHT]);
+      $processedImage = $imageService->applyProcessingInstructions(
+          $fileRef, 
+            [
+              'maxWidth' => self::MAX_WIDTH,
+              'maxHeight' => self::MAX_HEIGHT,
+              'crop' => $cropArea->isEmpty() ? null : $cropArea->makeAbsoluteBasedOnFile($fileRef)
+            ]
+          );
       return $imageService->getImageUri($processedImage);
     }
     else {

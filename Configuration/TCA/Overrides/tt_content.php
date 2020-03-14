@@ -45,7 +45,19 @@ $GLOBALS['TCA']['tt_content']['types']['skvideo_ce'] = array(
       'image' => [
          'label' => 'Custom preview image',
          'config' => [
-            'maxitems' => 1
+            'maxitems' => 1,
+                'overrideChildTca' => [
+                    'types' => [
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+//                            'showitem' => '
+  //                              --palette--;;imageoverlayPalette,
+    //                            --palette--;;filePalette'
+                            'showitem' => '
+                                crop,
+                                --palette--;;filePalette'
+                        ],
+                    ],
+                ],
          ]
       ],
       /*
