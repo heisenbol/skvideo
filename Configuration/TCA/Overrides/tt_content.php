@@ -4,7 +4,7 @@
    array(
       'Youtube / Vimeo Embed',
       'skvideo_ce',
-      'EXT:skvideo/Resources/Public/Icons/Backend/ContentElement/Video.png'
+      'EXT:skvideo/Resources/Public/Icons/Backend/ContentElement/player_icon.svg'
    ),
    'CType',
    'skvideo'

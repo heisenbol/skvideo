@@ -13,7 +13,7 @@ defined('TYPO3_MODE') || die('Access denied.');
 		$iconRegistry->registerIcon(
 			'skvideo-icon',
 			\TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
-			['source' => 'EXT:skvideo/Resources/Public/Icons/Backend/ContentElement/Video.png']
+			['source' => 'EXT:skvideo/Resources/Public/Icons/Backend/ContentElement/player_icon.svg']
 		);
 
 		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
