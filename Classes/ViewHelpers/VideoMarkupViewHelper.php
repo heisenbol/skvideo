@@ -3,7 +3,7 @@ namespace Skar\Skvideo\ViewHelpers;
 
 use Skar\Skvideo\Helper;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-class VideoMarkupViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper {
 
     /**
      * Initialize additional argument
@@ -22,8 +22,9 @@ class VideoMarkupViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
         $row = $this->arguments['data'];
         $customPreviewImages = $this->arguments['images']??null;
 
-        $flexformService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Service\FlexFormService::class);
-        $settings = $flexformService->convertFlexFormContentToArray($row['pi_flexform'])['settings']??NULL;
+//        $flexformService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Service\FlexFormService::class);
+        $flexFormService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Service\FlexFormService::class);
+        $settings = $flexFormService->convertFlexFormContentToArray($row['pi_flexform'])['settings']??NULL;
         if (!$settings) {
           return 'Missing plugin settings';
         }

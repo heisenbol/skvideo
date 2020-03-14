@@ -33,8 +33,9 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
    {
       if ($row['CType'] === 'skvideo_ce') {
         $drawItem = false;
-        $flexformService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Service\FlexFormService::class);
-        $settings = $flexformService->convertFlexFormContentToArray($row['pi_flexform'])['settings']??NULL;
+//        $flexformService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Service\FlexFormService::class);
+        $flexFormService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Service\FlexFormService::class);
+        $settings = $flexFormService->convertFlexFormContentToArray($row['pi_flexform'])['settings']??NULL;
 
         if (!$settings) {
           $itemContent = 'Missing plugin settings';

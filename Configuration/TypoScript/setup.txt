@@ -1,44 +1,8 @@
-# for fluid_styled_content
-[userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('fluid_styled_content')]
-  lib.contentElement {
-     templateRootPaths {
-        5484 = EXT:skvideo/Resources/Private/Templates/
-     }
-  }
 
-  tt_content {
-     skvideo_ce =< lib.contentElement
-     skvideo_ce {
-      templateName = Skvideo
-      dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
-      dataProcessing.10 {
-              references {
-                      table = tt_content
-                      fieldName = image
-              }
-              as = images
-      }
-     }
-   # dataProcessing {
-   #    1 = Skar\Skvideo\DataProcessing\SkvideoProcessor
-   #    1 {
-   #       useHere = theConfigurationOfTheDataProcessor
-   #    }
-   # }
 
-  }
-[global]
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:skvideo/Configuration/TypoScript/Extension/FluidStyledContent/setup.typoscript" condition="skextension.isLoaded('fluid_styled_content') == 1">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:skvideo/Configuration/TypoScript/Extension/CssStyledContent/setup.typoscript" condition="skextension.isLoaded('css_styled_content') == 1">
 
-# for css_styled_content
-[userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('css_styled_content')]
-  tt_content.skvideo_ce = FLUIDTEMPLATE
-  tt_content.skvideo_ce {
-    templateName = Skvideo
-     templateRootPaths {
-        5484 = EXT:skvideo/Resources/Private/Templates/
-     }
-  }
-[global]
 
 
 

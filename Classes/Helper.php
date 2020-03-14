@@ -189,7 +189,7 @@ class Helper
     return true;
   }
   private function getAbsoluteUploadDir() {
-    return PATH_site.'/'.$this->getRelativeUploadFolder();
+    return \TYPO3\CMS\Core\Core\Environment::getPublicPath().'/'.$this->getRelativeUploadFolder();
   }
   private function getRelativeFilePath($code, $filePrefix) {
     return $this->getRelativeUploadFolder().$this->getFilename($code, $filePrefix);
