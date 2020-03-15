@@ -67,10 +67,6 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
         foreach($fileReferences as $fileReference) {
           $customPreviewImage = $fileReference;
           break;
-          if (!$fileReference->getHidden() && !$fileReference->getDeleted()) {
-            $customPreviewImage = $fileReference;
-            break;
-          }
         }
         if ($customPreviewImage) {
 
