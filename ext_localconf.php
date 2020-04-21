@@ -5,6 +5,14 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php'][
    \Skar\Skvideo\Hooks\PageLayoutView\SkvideoPreviewRenderer::class;
 
 
+
+$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+$iconRegistry->registerIcon(
+    'skvideo-video',
+    \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+    ['source' => 'EXT:skvideo/Resources/Public/Icons/Backend/ContentElement/player_icon.svg']
+);
+
    
    
 // declare cache for video names and titles

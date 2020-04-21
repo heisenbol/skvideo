@@ -1,7 +1,8 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers" data-namespace-typo3-fluid="true">
 
-
+<b>
 Type: {type}
+<br>Code: {embedCode}
 <br>Title: 
 <f:if condition="{includeTitles}">
     <f:then>{title}</f:then>
@@ -9,9 +10,9 @@ Type: {type}
         <span style="font-style: italic;">not shown</span>
     </f:else>
 </f:if>
-
+</b>
 <br>
-<a href="{platformLink}" target="_blank" title="View on Video Site"><f:image src="{imgPath}" alt="alt text" width="100" /></a>
+<a href="{platformLink}" target="_blank" title="View on Video Site"><f:image src="{imgPath}" alt="" width="200" /></a>
 
 
 </html>

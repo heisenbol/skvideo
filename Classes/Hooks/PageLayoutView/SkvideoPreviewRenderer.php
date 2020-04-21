@@ -67,6 +67,10 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
         foreach($fileReferences as $fileReference) {
           $customPreviewImage = $fileReference;
           break;
+          if (!$fileReference->getHidden() && !$fileReference->getDeleted()) {
+            $customPreviewImage = $fileReference;
+            break;
+          }
         }
         if ($customPreviewImage) {
 
@@ -96,7 +100,7 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
         $fluidTmpl->assign('type', $type);
         $fluidTmpl->assign('platformLink', $platformLink);
         $fluidTmpl->assign('imgPath', $imgPath);
-
+        $fluidTmpl->assign('embedCode', $code);
         $itemContent = $parentObject->linkEditContent($fluidTmpl->render(), $row);
       }
    }

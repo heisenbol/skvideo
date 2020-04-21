@@ -47,7 +47,6 @@ class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractVi
         else {
             $imgSrc = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_FE); 
         }
-        
 
         $titlesMarkup = '';
         $hoverTitleEscaped = '';
@@ -69,9 +68,6 @@ class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractVi
             }
         }
 
-        $overrideTitle = $settings['overridetitle'] ?? null;
-        $includeTitles = $settings['includetitles'] ?? null;
-
         $ratio = $settings['sizeratio'] ?? 43;
         $maxWidth = intval($settings['maxwidth'] ?? 0);
 
@@ -92,7 +88,6 @@ class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractVi
         }
 
         $previewImageMarkup = '<img src="'.$imgSrc.'" alt="'.$hoverTitleEscaped.'">';
-        
 
         if ($ratio == 169) {
             $embedWidth = 560;
@@ -109,16 +104,28 @@ class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractVi
             'skvideo'
         );
 
+        // Localisation Added
+        $lang = strtoupper($GLOBALS['TSFE']->config['config']["language"]);
+        if(is_array($settings[$lang])){
+            $settings=$settings[$lang];
+            $settings['message'] =  preg_replace('/\$videoservice/', $type, $settings['message']);
+        }
+
         if ($type == Helper::TYPE_YOUTUBE) {
             $embedMarkup = '<iframe width="'.$embedWidth.'" height="'.$embedHeight.'" src="https://www.youtube-nocookie.com/embed/'.$code.'?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         }
         else if ($type == Helper::TYPE_VIMEO) {
-            $embedMarkup = '<iframe src="https://player.vimeo.com/video/9696328?autoplay=1" width="'.$embedWidth.'" height="'.$embedHeight.'" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+            $embedMarkup = '<iframe src="https://player.vimeo.com/video/'.$code.'?autoplay=1" width="'.$embedWidth.'" height="'.$embedHeight.'" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
         }
         else {
             $embedMarkup = 'Unsupported video type '.htmlspecialchars($type, ENT_QUOTES, "UTF-8");
         }
-        $playButtonMarkup = "<div title='$hoverTitleEscaped' class='sk-video-playbutton' data-cancel='".htmlspecialchars($settings['cancel'], ENT_QUOTES, "UTF-8")."' data-continue='".htmlspecialchars($settings['continue'], ENT_QUOTES, "UTF-8")."' data-rememberme='".htmlspecialchars($settings['rememberme'], ENT_QUOTES, "UTF-8")."' data-message='".htmlspecialchars($settings['message'], ENT_QUOTES, "UTF-8")."' data-videomarkup='".htmlspecialchars($embedMarkup, ENT_QUOTES, "UTF-8")."'></div>";
+        $playButtonMarkup = "<div title='$hoverTitleEscaped' class='sk-video-playbutton' data-type='".$type."' 
+            data-cancel='".htmlspecialchars($settings['cancel'], ENT_QUOTES, "UTF-8")."' 
+            data-continue='".htmlspecialchars($settings['continue'], ENT_QUOTES, "UTF-8")."' 
+            data-rememberme='".htmlspecialchars($settings['rememberme'], ENT_QUOTES, "UTF-8")."' 
+            data-message='".htmlspecialchars($settings['message'], ENT_QUOTES, "UTF-8")."' 
+            data-videomarkup='".htmlspecialchars($embedMarkup, ENT_QUOTES, "UTF-8")."'></div>";
 
         return '<div class="sk-video-supercontainer" style="max-width:'.$maxWidth.'"><div class="sk-video-container ratio'.$ratio.'">'.$previewImageMarkup.$titlesMarkup.$playButtonMarkup.'</div></div>';
 	}

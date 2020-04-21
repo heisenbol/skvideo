@@ -23,8 +23,8 @@ class Helper
   const CACHE_PREFIX = 'TITLES';
   private const CACHE_TAG = 'skvideo';
 
-  const MAX_WIDTH = 500;
-  const MAX_HEIGHT = 500;
+  const MAX_WIDTH = 1280   ;
+  const MAX_HEIGHT = 1280;
 
   private function getTitlesCacheKey($code, $type) {
     return self::CACHE_PREFIX.$code.'_'.$type;
@@ -117,14 +117,15 @@ class Helper
     ];
     return $this->retrieveImage($url, $code, $context, self::FILE_PREFIX_YOUTUBE);
   }
+
   private function getPreviewImageUrlVimeo($code, $context) {
     $apiUrl = "https://vimeo.com/api/v2/video/$code.json";
-    $json = file_get_contents($apiUrl);
+    $json = @file_get_contents($apiUrl);
     $decoded = json_decode($json,true);
     $url = $decoded[0]['thumbnail_large']??null;
-    return $this->retrieveImage($url, $code, $context, self::FILE_PREFIX_YOUTUBE);
-
+    return $this->retrieveImage($url, $code, $context, self::FILE_PREFIX_VIMEO);
   }
+
   private function retrieveImage($url, $code, $context, $filePrefix) {
     $retrieveResult = $this->retrieveThumbImage($url, $code, $filePrefix);
     if ($retrieveResult === false) {

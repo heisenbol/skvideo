@@ -19,6 +19,27 @@ plugin.tx_skvideo {
     }
 }
 
+plugin.tx_skvideo {
+    settings.GR {
+        message =  Τα βίντεο αυτού του ιστότοπου φιλοξενούνται στην εταιρεία YouTube ή στην εταιρεία Vimeo. Εάν συνεχίσετε, η εταιρεία θα είναι σε θέση να παρακολουθεί πληροφορίες σχετικά με εσάς (π.χ. την  IP σας, τις προτιμήσεις σας κλπ)
+        rememberme = Το πρόγραμμα περιήγησης να θυμάται την απόφασή μου για 30 ημέρες χρησιμοποιώντας ένα cookie
+        cancel = Ακύρωση
+        continue = Συμφωνώ, προβολή του βίντεο
+    }
+    settings.DE {
+    	message = Mit dem Aufruf des Videos erklären Sie sich einverstanden, dass Ihre Daten an $videoservice übermittelt werden und dass Sie die <a href="/datenschutz.html">Datenschutzerklärung</a> gelesen haben.
+        rememberme = Video immer abspielen
+        cancel = Ablehnen
+        continue = Video ansehen
+    }
+  	settings.EN {
+    	message =  By viewing this video you agree to loading content from $videoservice. Please see our <a href="/en/privacy-policy.html">privacy policy</a> for details.
+        rememberme = Always Accept
+        cancel = Decline
+        continue = Show Video
+    }
+}
+
 #message:
 #Τα βίντεο αυτού του ιστότοπου φιλοξενούνται στην εταιρεία YouTube ή στην εταιρεία Vimeo. Εάν συνεχίσετε, η εταιρεία θα είναι σε θέση να παρακολουθεί πληροφορίες σχετικά με εσάς (π.χ. την  IP σας, τις προτιμήσεις σας κλπ)
 #

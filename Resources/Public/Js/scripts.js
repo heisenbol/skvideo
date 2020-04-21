@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 	var lastContainer = null;
 	var lastVideoMarkup = null;
-	var rememberCookieName = "skvideoremember";
+	var rememberCookieName = "skvideoremember" ;
 	//console.log('initting videos');
 	var videoElements = document.getElementsByClassName("sk-video-playbutton");
 	for (var i = 0; i < videoElements.length; i++) {
@@ -9,21 +9,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	}
 	function confirmVideo() {
 		lastVideoMarkup = this.getAttribute("data-videomarkup");
+		lastVideoType = this.getAttribute("data-type");
+		cookieName = rememberCookieName + "_" + lastVideoType;
 	    //var videoMarkup = this.getAttribute("data-videomarkup");
+		//console.log(this);
+		//console.log(lastVideoMarkup);
 	    lastContainer = findAncestor(this, 'sk-video-container');
-	    if (getCookie(rememberCookieName) == 1) {
+	    if (getCookie(cookieName) == 1) {
 	    	//console.log("remember we was checked, sto show the video");
 	    	lastContainer.innerHTML = lastVideoMarkup;
+			addClass(lastContainer, "sk-running");
 	    	return;
 	    }
-	    //console.log(lastVideoMarkup);
+	    console.log(lastVideoMarkup);
 	    var modalElement = document.querySelector(".sk-video-modal");
 	    if (modalElement == null) {
 	    	var rememberme = this.getAttribute("data-rememberme");
 	    	var message = this.getAttribute("data-message");
 	    	var cancel = this.getAttribute("data-cancel");
 	    	var continuemsg = this.getAttribute("data-continue");
-			var html = '<div class="sk-video-modal"><div><span class="disclaimer">'+message+'</span><label><input type="checkbox"> '+rememberme+'</label><br><button class="cancel">'+cancel+'</button> <button class="continue">'+continuemsg+'</button></div></div>';
+			var html = '<div class="sk-video-modal"><div class="acceptgdpr-text"><span class="disclaimer">'+message+'</span><label><input type="checkbox"> '+rememberme+'</label><br>' +
+				'<button class="continue btn so_button so_button_white">'+continuemsg+'</button><button class="cancel btn so_button so_button_white">'+cancel+'</button></div></div>';
 			appendHtml(document.body, html); 
 			document.querySelector(".sk-video-modal .cancel").addEventListener("click", function(){
 			  var modalElement = document.querySelector(".sk-video-modal");
@@ -33,8 +39,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			  var modalElement = document.querySelector(".sk-video-modal");
 			  removeClass(modalElement, "active");
 			  //console.log("Continuing");
-			  handleRember();
+			  handleRember(cookieName);
 			  lastContainer.innerHTML = lastVideoMarkup;
+			  addClass(lastContainer, "sk-running");
 			});
 		}
 		modalElement = document.querySelector(".sk-video-modal");
@@ -42,10 +49,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		addClass(modalElement, "active");
 	};
 
-	function handleRember() {
+	function handleRember(theCookieName) {
 		var rememberChecked = document.querySelector(".sk-video-modal input[type='checkbox']").checked;
 		if (rememberChecked) {
-			setCookie(rememberCookieName, 1, 30);
+			setCookie(theCookieName, 1, 30);
 		}
 	}
 	function setCookie(name,value,days) {
@@ -100,6 +107,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	    ele.className=ele.className.replace(reg,' ');
 	  }
 	}
+
+	// Remote Playbuttons on the screen
+	$('.sk-video-remotebutton').on("click", function () {
+		var self=this;
+		console.log(this);
+		$(this).parents(".sk-video-container").find(".sk-video-playbutton").click()
+	});
+
 });
 
 
