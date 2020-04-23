@@ -3,6 +3,7 @@ namespace Skar\Skvideo\ViewHelpers;
 
 use Skar\Skvideo\Helper;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Core\Service\FlexFormService;
 class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper {
 
     /**
@@ -22,8 +23,7 @@ class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractVi
         $row = $this->arguments['data'];
         $customPreviewImages = $this->arguments['images']??null;
 
-//        $flexformService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Service\FlexFormService::class);
-        $flexFormService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Service\FlexFormService::class);
+        $flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
         $settings = $flexFormService->convertFlexFormContentToArray($row['pi_flexform'])['settings']??NULL;
         if (!$settings) {
           return 'Missing plugin settings';
@@ -69,18 +69,11 @@ class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractVi
             }
         }
 
-        $overrideTitle = $settings['overridetitle'] ?? null;
-        $includeTitles = $settings['includetitles'] ?? null;
+
 
         $ratio = $settings['sizeratio'] ?? 43;
         $maxWidth = intval($settings['maxwidth'] ?? 0);
 
-/*
-        $itemContent = '<p>Video type:'.$type.'</p>';
-        $itemContent .= '<p>Code:'.$code.'</p>';
-        $itemContent .= '<p>imgSrc:'.$imgSrc.'</p>';
-        $itemContent .= '<p>Auto play:'.($autoplay?'Yes':'No').'</p>';
-*/
         if (!in_array($ratio,[43,169])) {
             $ratio = 43;
         }
@@ -92,7 +85,6 @@ class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractVi
         }
 
         $previewImageMarkup = '<img src="'.$imgSrc.'" alt="'.$hoverTitleEscaped.'">';
-        
 
         if ($ratio == 169) {
             $embedWidth = 560;
