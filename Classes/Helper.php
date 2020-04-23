@@ -5,7 +5,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Cache\CacheManager;
 use \TYPO3\CMS\Extbase\Service\ImageService;
 use \TYPO3\CMS\Extbase\Object\ObjectManager;
-
+use \TYPO3\CMS\Core\Utility\PathUtility;
 /**
  * Contains a preview rendering for the page module of CType="skvideo_skvideo_ce"
  */
@@ -74,15 +74,18 @@ class Helper
     return $decoded;
   }
 
-  public function getPreviewImageUrl($code, $type, $context) {
-    if ($type == self::TYPE_YOUTUBE) {
-      return $this->getPreviewImageUrlYoutube($code, $context);
+    public function getPreviewImageUrl($code, $type, $context) {
+        $imgUrl = null;
+        if ($type == self::TYPE_YOUTUBE) {
+            $imgUrl = $this->getPreviewImageUrlYoutube($code, $context);
+        }
+        if ($type == self::TYPE_VIMEO) {
+            $imgUrl = $this->getPreviewImageUrlVimeo($code, $context);
+        }
+        if (!$imgUrl)
+            return $this->getPreviewImageUrlNoImage();
+        return $imgUrl;
     }
-    if ($type == self::TYPE_VIMEO) {
-      return $this->getPreviewImageUrlVimeo($code, $context);
-    }
-    return $this->getPreviewImageUrlNoImage();
-  }
 
   public function getCustomPreviewImageUrl($fileRef, $context) {
     $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
@@ -119,10 +122,10 @@ class Helper
   }
   private function getPreviewImageUrlVimeo($code, $context) {
     $apiUrl = "https://vimeo.com/api/v2/video/$code.json";
-    $json = file_get_contents($apiUrl);
+    $json = @file_get_contents($apiUrl);
     $decoded = json_decode($json,true);
     $url = $decoded[0]['thumbnail_large']??null;
-    return $this->retrieveImage($url, $code, $context, self::FILE_PREFIX_YOUTUBE);
+    return $this->retrieveImage($url, $code, $context, self::FILE_PREFIX_VIMEO);
 
   }
   private function retrieveImage($url, $code, $context, $filePrefix) {
@@ -140,7 +143,8 @@ class Helper
     }
   }
   private function getPreviewImageUrlNoImage() {
-    return 'noimage src';
+    return PathUtility::getAbsoluteWebPath(GeneralUtility::getFileAbsFileName( 'EXT:skvideo/Resources/Public/Images/nopreview.png'));
+
   }
 
   private function getImageUrl($absoluteFilePath, $maxWidth, $maxHeight, $quality = 95) {
