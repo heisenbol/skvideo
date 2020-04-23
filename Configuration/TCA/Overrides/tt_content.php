@@ -36,7 +36,7 @@ $GLOBALS['TCA']['tt_content']['types']['skvideo_ce'] = array(
    ',
    'columnsOverrides' => [
       'bodytext' => [
-         'label' => 'Youtube/Vimeo Video Code',
+         'label' => 'Video Code (Youtube, Vimeo)',
          'config' => [
             'type'=>'input',
             'enableRichtext' => false
@@ -79,5 +79,5 @@ $GLOBALS['TCA']['tt_content']['types']['skvideo_ce'] = array(
     'FILE:EXT:skvideo/Configuration/FlexForms/Videoproperties.xml',
     'skvideo_ce'
 );
-//\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $fields);
-
+// Content Type Icon in Page BE Editor
+$GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['skvideo_ce'] =  'skvideo-icon';
