@@ -65,12 +65,13 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
         $fileReferences = \TYPO3\CMS\Backend\Utility\BackendUtility::resolveFileReferences('tt_content', 'image', $row);
         $customPreviewImage = null;
         foreach($fileReferences as $fileReference) {
-          $customPreviewImage = $fileReference;
-          break;
+            if (!$fileReference->getProperty('hidden') && !$fileReference->getProperty('deleted')) {
+                $customPreviewImage = $fileReference;
+                break;
+            }
         }
         if ($customPreviewImage) {
-
-            $imgPath = $helper->getCustomPreviewImageUrl($customPreviewImage, Helper::CONTEXT_BE); 
+            $imgPath = $helper->getCustomPreviewImageUrl($customPreviewImage, Helper::CONTEXT_BE);
         }
         else {
             $imgPath = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_BE);
