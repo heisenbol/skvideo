@@ -34,6 +34,10 @@ You can adapt the text of the confirmation modal dialog displayed to the user vi
 
 `plugin.tx_skvideo.settings.continue`: The text for the agree button
 
+`plugin.tx_skvideo.settings.max_preview_height`: The maximum height of the retrieved and generated preview image
+
+`plugin.tx_skvideo.settings.max_preview_width`: The maximum width of the retrieved and generated preview image
+
 ### Thumbnail cache lifetime
 The extension has 2 options to control the lifetime of the preview images and the associated video texts (title etc). Essentially they control how long these should be cached. Currently both values default to 1209600 seconds which is 2 weeks.
 

@@ -15,8 +15,14 @@
 			<trans-unit id="continuelabel">
 				<source>Agree button text: The text for the agree button</source>
 			</trans-unit>
-			<trans-unit id="constants_subcategory_texts">
-				<source>skvideo texts</source>
+			<trans-unit id="constants_subcategory_settings">
+				<source>skvideo settings</source>
+			</trans-unit>
+			<trans-unit id="maxpreviewheight">
+				<source>Max height of preview image</source>
+			</trans-unit>
+			<trans-unit id="maxpreviewwidth">
+				<source>Max width of preview image</source>
 			</trans-unit>
 		</body>
 	</file>

@@ -1,4 +1,4 @@
-# customsubcategory=skvideo=LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:constants_subcategory_texts
+# customsubcategory=skvideo=LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:constants_subcategory_settings
 plugin.tx_skvideo {
     settings {
     	# cat=content/skvideo/01; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:messagelabel
@@ -9,5 +9,9 @@ plugin.tx_skvideo {
         cancel = Cancel
         # cat=content/skvideo/04; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:continuelabel
         continue = I agree, show the video
+        # cat=content/skvideo/05; type=int [100-3000]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:maxpreviewheight
+        max_preview_height = 500
+        # cat=content/skvideo/06; type=int [100-3000]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:maxpreviewwidth
+        max_preview_width = 500
     }
 }

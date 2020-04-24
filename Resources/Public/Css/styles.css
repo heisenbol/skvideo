@@ -8,12 +8,12 @@
 }
 .sk-video-container {
 	position: relative;
-	height: 0; 
+	height: 0;
 	overflow: hidden;
 }
 .sk-video-container.ratio169 {
 	padding-bottom: 56.25%;
-	
+
 	display:block;
 }
 .sk-video-container.ratio43 {
@@ -38,10 +38,10 @@
 	top:0;
 	left:0;
 	cursor:pointer;
-	background: rgba(0,0,0,0.0) url(../Icons/player_icon.svg) no-repeat center; 
-	
+	background: rgba(0,0,0,0.0) url(../Icons/player_icon.svg) no-repeat center;
+
 	background-size: 20%;
-	
+
 	transition: transform .15s ease-out;
 }
 .sk-video-playbutton:hover {
@@ -92,7 +92,7 @@
 .sk-video-modal .disclaimer {
 	display:block;
 	margin-bottom:1em;
-	
+
 	padding:1em 0;
 	max-height:50px;
 	overflow: auto;

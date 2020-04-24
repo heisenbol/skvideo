@@ -16,6 +16,8 @@ plugin.tx_skvideo {
         rememberme = {$plugin.tx_skvideo.settings.rememberme}
         cancel = {$plugin.tx_skvideo.settings.cancel}
         continue = {$plugin.tx_skvideo.settings.continue}
+        max_preview_height = {$plugin.tx_skvideo.settings.max_preview_height}
+        max_preview_width = {$plugin.tx_skvideo.settings.max_preview_width}
     }
 }
 

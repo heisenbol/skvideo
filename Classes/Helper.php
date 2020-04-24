@@ -23,8 +23,24 @@ class Helper
   const CACHE_PREFIX = 'TITLES';
   private const CACHE_TAG = 'skvideo';
 
-  const MAX_WIDTH = 500;
-  const MAX_HEIGHT = 500;
+  private $MAX_WIDTH;
+  private $MAX_HEIGHT;
+
+    function __construct() {
+        $configurationManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::class);
+        $settings = $configurationManager->getConfiguration(
+            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
+            'skvideo'
+        );
+        $this->MAX_WIDTH = intval($settings['max_preview_width']);
+        $this->MAX_HEIGHT = intval($settings['max_preview_height']);
+        if ($this->MAX_WIDTH < 100) {
+            $this->MAX_WIDTH = 500;
+        }
+        if ($this->MAX_HEIGHT < 100) {
+            $this->MAX_HEIGHT = 500;
+        }
+    }
 
   private function getTitlesCacheKey($code, $type) {
     return self::CACHE_PREFIX.$code.'_'.$type;
@@ -99,8 +115,8 @@ class Helper
       $processedImage = $imageService->applyProcessingInstructions(
           $fileRef, 
             [
-              'maxWidth' => self::MAX_WIDTH,
-              'maxHeight' => self::MAX_HEIGHT,
+              'maxWidth' => $this->MAX_WIDTH,
+              'maxHeight' => $this->MAX_HEIGHT,
               'crop' => $cropArea->isEmpty() ? null : $cropArea->makeAbsoluteBasedOnFile($fileRef)
             ]
           );
@@ -134,8 +150,9 @@ class Helper
       return false;
     }
     if ($context === self::CONTEXT_FE) {
-      $maxWidth = self::MAX_WIDTH;
-      $maxHeight = self::MAX_HEIGHT;
+      $maxWidth = $this->MAX_WIDTH;
+      $maxHeight = $this->MAX_HEIGHT;
+
       return $this->getImageUrl($this->getAbsoluteFilePath($code, $filePrefix), $maxWidth, $maxHeight, 90);
     }
     else {
