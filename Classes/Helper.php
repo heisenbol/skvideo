@@ -162,16 +162,24 @@ class Helper
   }
 
   private function getImageUrl($absoluteFilePath, $maxWidth, $maxHeight, $quality = 95) {
-    $img = array();
-    $img['image.']['file.']['maxH']   = $maxWidth;
-    $img['image.']['file.']['maxW']   = $maxHeight;
-    $img['image.']['file.']['params']  ='-quality '.$quality;
-    $img['image.']['file'] = $absoluteFilePath;  
-    $configurationManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::class);
-  //  $cObj = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');
-    $cObj = $configurationManager->getContentObject();
-//    $cObj = GeneralUtility::makeInstance(TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class);
-    return $cObj->cObjGetSingle('IMG_RESOURCE', $img['image.']);
+//    $img = array();
+//    $img['image.']['file.']['maxH']   = $maxWidth;
+//    $img['image.']['file.']['maxW']   = $maxHeight;
+//    $img['image.']['file.']['params']  ='-quality '.$quality;
+//    $img['image.']['file'] = $absoluteFilePath;
+//    $configurationManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::class);
+//    $cObj = $configurationManager->getContentObject();
+//    return $cObj->cObjGetSingle('IMG_RESOURCE', $img['image.']);
+
+      $objectManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
+      $imageService= $objectManager->get(ImageService::class);
+      $image = $imageService->getImage($absoluteFilePath, null, false);
+      $processingInstructions = array(
+          'maxWidth' => $maxWidth,
+          'maxHeight' => $maxHeight
+      );
+      $processedImage = $imageService->applyProcessingInstructions($image, $processingInstructions);
+      return $imageService->getImageUri($processedImage);
   }
 
   private function getAbsoluteFilePath($code, $filePrefix) {
