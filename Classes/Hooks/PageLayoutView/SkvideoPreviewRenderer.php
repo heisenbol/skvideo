@@ -92,7 +92,7 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
         $fluidTmpl->setTemplatePathAndFilename($fluidTmplFilePath);
         $fluidTmpl->assign('title', $title);
         $fluidTmpl->assign('includeTitles', $includeTitles);
-        $fluidTmpl->assign('type', $type.$aaaa);
+        $fluidTmpl->assign('type', $type);
         $fluidTmpl->assign('platformLink', $platformLink);
         $fluidTmpl->assign('imgPath', $imgPath);
         $fluidTmpl->assign('videoCode', $code);
