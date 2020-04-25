@@ -1,30 +1,35 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 	var lastContainer = null;
 	var lastVideoMarkup = null;
+	var lastVideoProvider = null;
+	var lastCookieName = null;
 	var rememberCookieName = "skvideoremember";
-	//console.log('initting videos');
 	var videoElements = document.getElementsByClassName("sk-video-playbutton");
 	for (var i = 0; i < videoElements.length; i++) {
 	    videoElements[i].addEventListener('click', confirmVideo, false);
 	}
 	function confirmVideo() {
 		lastVideoMarkup = this.getAttribute("data-videomarkup");
-	    //var videoMarkup = this.getAttribute("data-videomarkup");
+		lastVideoProvider = this.getAttribute("data-type");
 	    lastContainer = findAncestor(this, 'sk-video-container');
-	    if (getCookie(rememberCookieName) == 1) {
-	    	//console.log("remember we was checked, sto show the video");
+		var lastCookieName = rememberCookieName+lastVideoProvider;
+	    if (getCookie(lastCookieName) == 1) {
 	    	lastContainer.innerHTML = lastVideoMarkup;
 	    	return;
 	    }
-	    //console.log(lastVideoMarkup);
 	    var modalElement = document.querySelector(".sk-video-modal");
 		var message = this.getAttribute("data-message");
 	    if (modalElement == null) {
 	    	var rememberme = this.getAttribute("data-rememberme");
 	    	var cancel = this.getAttribute("data-cancel");
 	    	var continuemsg = this.getAttribute("data-continue");
-			var html = '<div class="sk-video-modal"><div><span class="disclaimer">'+message+'</span><label><input type="checkbox"> '+rememberme+'</label><br><button class="cancel">'+cancel+'</button> <button class="continue">'+continuemsg+'</button></div></div>';
-			appendHtml(document.body, html); 
+			var html = '<div class="sk-video-modal"><div><span class="disclaimer">'
+				+message+'</span><label><input type="checkbox"> '
+				+rememberme+'</label><br><button class="cancel">'
+				+cancel+'</button> <button class="continue">'
+				+continuemsg+'</button></div></div>';
+
+			appendHtml(document.body, html);
 			document.querySelector(".sk-video-modal .cancel").addEventListener("click", function(){
 			  var modalElement = document.querySelector(".sk-video-modal");
 			  removeClass(modalElement, "active");
@@ -32,8 +37,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			document.querySelector(".sk-video-modal .continue").addEventListener("click", function(){
 			  var modalElement = document.querySelector(".sk-video-modal");
 			  removeClass(modalElement, "active");
-			  //console.log("Continuing");
-			  handleRember();
+			  handleRemember(lastCookieName);
 			  lastContainer.innerHTML = lastVideoMarkup;
 			});
 		}
@@ -48,10 +52,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		addClass(modalElement, "active");
 	};
 
-	function handleRember() {
+	function handleRemember(cookieName) {
 		var rememberChecked = document.querySelector(".sk-video-modal input[type='checkbox']").checked;
 		if (rememberChecked) {
-			setCookie(rememberCookieName, 1, 30);
+			setCookie(cookieName, 1, 30);
 		}
 	}
 	function setCookie(name,value,days) {
