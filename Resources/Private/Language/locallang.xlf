@@ -4,16 +4,16 @@
 		<header/>
 		<body>
 			<trans-unit id="messagelabel">
-				<source>Main text: This is the text the user is asked to agree before viewing the video. You can use HTML markup in here.</source>
+				<source>Main text: This is the text the user is asked to agree before viewing the video. You can use HTML markup in here, and must make sure to escape any special HTML characters.</source>
 			</trans-unit>
 			<trans-unit id="remembermelabel">
-				<source>Remember decision: The text for the remember my decision checkbox</source>
+				<source>Remember decision: The text for the remember my decision checkbox. You can use HTML markup in here, and must make sure to escape any special HTML characters.</source>
 			</trans-unit>
 			<trans-unit id="cancellabel">
-				<source>Cancel button text: The text for the cancel button</source>
+				<source>Cancel button text: The text for the cancel button. You can use HTML markup in here, and must make sure to escape any special HTML characters.</source>
 			</trans-unit>
 			<trans-unit id="continuelabel">
-				<source>Agree button text: The text for the agree button</source>
+				<source>Agree button text: The text for the agree button. You can use HTML markup in here, and must make sure to escape any special HTML characters.</source>
 			</trans-unit>
 			<trans-unit id="constants_subcategory_settings">
 				<source>skvideo settings</source>
