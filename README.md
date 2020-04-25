@@ -23,9 +23,40 @@ The content element needs css_styled_content or fluid_styled_content in order to
 Additionally, the SK Video static template must have been included into your TYPO3 template.
 
 ## Configuration
-### Texts
-You can adapt the text of the confirmation modal dialog displayed to the user via constants.
+### Preview Image size
+Preview images that are retrieved from Youtube or Vimeo are resized to a max of 500x500 pixel. You can change this size via constants. For example, to resize to 700x600 pixel:
 
+`plugin.tx_skvideo.settings.max_preview_width = 700`
+
+`plugin.tx_skvideo.settings.max_preview_height = 600`
+
+
+### Texts
+You can adapt the text of the confirmation modal dialog displayed to the user. 
+
+#### Using Typoscript in setup section
+There are 4 keys that you can adapt:
+
+`defaultmessagetext`: This is the text the user is asked to agree before viewing the video. You can use HTML markup in here. You can also use a placeholder VIDEOPROVIDER which will be replaced with YOUTUBE or VIMEO according to the current video.
+
+`defaultremembermetext`: The text for the remember my decision checkbox
+
+`defaultcanceltext`: The text for the cancel button
+
+`defaultcontinuetext`: The text for the agree button 
+
+To change these texts, use one or more of these keys in your setup section
+
+`plugin.tx_skvideo._LOCAL_LANG.default.defaultmessagetext` = New custom text VIDEOPROVIDER for default language
+
+`plugin.tx_skvideo._LOCAL_LANG.en.defaultmessagetext` = New custom text custom text for en
+
+`plugin.tx_skvideo._LOCAL_LANG.de.defaultmessagetext` = New custom text custom text for de
+
+
+#### Using constants
+You can also change these texts via constants, which makes sense only for single language sites:
+ 
 `plugin.tx_skvideo.settings.message`: This is the text the user is asked to agree before viewing the video. You can use HTML markup in here.
 
 `plugin.tx_skvideo.settings.rememberme`: The text for the remember my decision checkbox
@@ -34,9 +65,6 @@ You can adapt the text of the confirmation modal dialog displayed to the user vi
 
 `plugin.tx_skvideo.settings.continue`: The text for the agree button
 
-`plugin.tx_skvideo.settings.max_preview_height`: The maximum height of the retrieved and generated preview image
-
-`plugin.tx_skvideo.settings.max_preview_width`: The maximum width of the retrieved and generated preview image
 
 ### Thumbnail cache lifetime
 The extension has 2 options to control the lifetime of the preview images and the associated video texts (title etc). Essentially they control how long these should be cached. Currently both values default to 1209600 seconds which is 2 weeks.
