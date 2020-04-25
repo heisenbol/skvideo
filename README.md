@@ -12,7 +12,7 @@ The **editor** inserts a skvideo content element into a page. He needs to specif
 
 The **end user** visits the page. The plugin fetches and stores a copy of the video thumbnail on the server. So the user's browser downloads the thumbnail from the site server, and not from the video provider. 
 
-If the user presses the play button of the video, he is being presented with a customizable notice and is asked to confirm that he want to play the video. Optionally, the user can check a checkbox to store his decission via a cookie for 30 days.
+If the user presses the play button of the video, he is being presented with a customizable notice and is asked to confirm that he wants to play the video. Optionally, the user can check a checkbox to store his decision via a cookie for 30 days. Separate cookies for Youtube and Vimeo are used.
 
 If the user confirms, the video is played. In case the user had checked the checkbox to store his decission, the video is played without the notice.
 
@@ -29,6 +29,12 @@ Preview images that are retrieved from Youtube or Vimeo are resized to a max of 
 `plugin.tx_skvideo.settings.max_preview_width = 700`
 
 `plugin.tx_skvideo.settings.max_preview_height = 600`
+
+### CSS
+The extension comes with a default css file located at Resources/Public/Css/styles.css. If you want to adapt it, you copy it 
+and include your changed version in your site. In this case, you can instruct the extension to not include it's own css file via a constant:
+
+`plugin.tx_skvideo.settings.nocss = 1`
 
 
 ### Texts
