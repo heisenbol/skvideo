@@ -1,17 +1,20 @@
 # customsubcategory=skvideo=LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:constants_subcategory_settings
 plugin.tx_skvideo {
     settings {
-    	# cat=content/skvideo/01; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:messagelabel
-        message =
-        # cat=content/skvideo/02; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:remembermelabel
-        rememberme =
-        # cat=content/skvideo/03; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:cancellabel
-        cancel =
-        # cat=content/skvideo/04; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:continuelabel
-        continue =
-        # cat=content/skvideo/05; type=int [100-3000]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:maxpreviewheight
+        # cat=content/skvideo/01; type=int [100-3000]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:maxpreviewheight
         max_preview_height = 500
-        # cat=content/skvideo/06; type=int [100-3000]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:maxpreviewwidth
+        # cat=content/skvideo/02; type=int [100-3000]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:maxpreviewwidth
         max_preview_width = 500
+        # cat=content/skvideo/03; type=boolean; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:nocss
+        nocss = 0
+    	# cat=content/skvideo/04; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:messagelabel
+        message =
+        # cat=content/skvideo/05; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:remembermelabel
+        rememberme =
+        # cat=content/skvideo/06; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:cancellabel
+        cancel =
+        # cat=content/skvideo/07; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:continuelabel
+        continue =
+
     }
 }

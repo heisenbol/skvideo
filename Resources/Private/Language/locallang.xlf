@@ -24,6 +24,9 @@
 			<trans-unit id="maxpreviewwidth">
 				<source>Max width of preview image</source>
 			</trans-unit>
+			<trans-unit id="nocss">
+				<source>Do not add css file. You can copy and adapt Resources/Public/Css/styles.css to your own needs</source>
+			</trans-unit>
 
 			<trans-unit id="defaultmessagetext">
 				<source>This video is served by VIDEOPROVIDER. If you continue, VIDEOPROVIDER will be able to track information about you (e.g. your IP, your viewing behavior etc)</source>

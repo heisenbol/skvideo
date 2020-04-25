@@ -5,9 +5,9 @@
 
 
 
-
-
-page.includeCSS.skvideo = EXT:skvideo/Resources/Public/Css/styles.css
+[{$plugin.tx_skvideo.settings.nocss} == false]
+    page.includeCSS.skvideo = EXT:skvideo/Resources/Public/Css/styles.css
+[END]
 page.includeJS.skvideo = EXT:skvideo/Resources/Public/Js/scripts.js
 
 plugin.tx_skvideo {
