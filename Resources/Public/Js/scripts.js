@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	    }
 	    //console.log(lastVideoMarkup);
 	    var modalElement = document.querySelector(".sk-video-modal");
+		var message = this.getAttribute("data-message");
 	    if (modalElement == null) {
 	    	var rememberme = this.getAttribute("data-rememberme");
-	    	var message = this.getAttribute("data-message");
 	    	var cancel = this.getAttribute("data-cancel");
 	    	var continuemsg = this.getAttribute("data-continue");
 			var html = '<div class="sk-video-modal"><div><span class="disclaimer">'+message+'</span><label><input type="checkbox"> '+rememberme+'</label><br><button class="cancel">'+cancel+'</button> <button class="continue">'+continuemsg+'</button></div></div>';
@@ -37,7 +37,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			  lastContainer.innerHTML = lastVideoMarkup;
 			});
 		}
+	    else {
+			// reset the message as it may contain the video provider which may be different for multiple videos on same page
+			document.querySelector(".sk-video-modal .disclaimer").innerHTML = message;
+		}
 		modalElement = document.querySelector(".sk-video-modal");
+
+
 		document.querySelector(".sk-video-modal input[type='checkbox']").checked=false;
 		addClass(modalElement, "active");
 	};

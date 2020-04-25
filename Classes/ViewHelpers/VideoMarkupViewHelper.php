@@ -4,6 +4,8 @@ namespace Skar\Skvideo\ViewHelpers;
 use Skar\Skvideo\Helper;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Service\FlexFormService;
+use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+
 class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper {
 
     /**
@@ -110,7 +112,33 @@ class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractVi
         else {
             $embedMarkup = 'Unsupported video type '.htmlspecialchars($type, ENT_QUOTES, "UTF-8");
         }
-        $playButtonMarkup = "<div title='$hoverTitleEscaped' class='sk-video-playbutton' data-cancel='".htmlspecialchars($settings['cancel'], ENT_QUOTES, "UTF-8")."' data-continue='".htmlspecialchars($settings['continue'], ENT_QUOTES, "UTF-8")."' data-rememberme='".htmlspecialchars($settings['rememberme'], ENT_QUOTES, "UTF-8")."' data-message='".htmlspecialchars($settings['message'], ENT_QUOTES, "UTF-8")."' data-videomarkup='".htmlspecialchars($embedMarkup, ENT_QUOTES, "UTF-8")."'></div>";
+
+        $message = LocalizationUtility::translate('defaultmessagetext', 'skvideo', null, null, null);
+        if (trim($settings['message']??'')) {
+            $message = trim($settings['message']);
+        }
+        // check if VIDEOPROVIDER placeholder needs to be replaced
+        $message = str_replace ( 'VIDEOPROVIDER', $type ,$message );
+
+        $cancel = LocalizationUtility::translate('defaultcanceltext', 'skvideo', null, null, null);
+        if (trim($settings['cancel']??'')) {
+            $cancel = trim($settings['cancel']);
+        }
+        $continue = LocalizationUtility::translate('defaultcontinuetext', 'skvideo', null, null, null);
+        if (trim($settings['continue']??'')) {
+            $continue = trim($settings['continue']);
+        }
+        $rememberme = LocalizationUtility::translate('defaultremembermetext', 'skvideo', null, null, null);
+        if (trim($settings['rememberme']??'')) {
+            $rememberme = trim($settings['rememberme']);
+        }
+        $playButtonMarkup = "<div title='$hoverTitleEscaped' class='sk-video-playbutton' data-type='"
+            .$type."' data-cancel='"
+            .htmlspecialchars($cancel, ENT_QUOTES, "UTF-8")."' data-continue='"
+            .htmlspecialchars($continue, ENT_QUOTES, "UTF-8")."' data-rememberme='"
+            .htmlspecialchars($rememberme, ENT_QUOTES, "UTF-8")."' data-message='"
+            .htmlspecialchars($message, ENT_QUOTES, "UTF-8")."' data-videomarkup='"
+            .htmlspecialchars($embedMarkup, ENT_QUOTES, "UTF-8")."'></div>";
 
         return '<div class="sk-video-supercontainer" style="max-width:'.$maxWidth.'"><div class="sk-video-container ratio'.$ratio.'">'.$previewImageMarkup.$titlesMarkup.$playButtonMarkup.'</div></div>';
 	}

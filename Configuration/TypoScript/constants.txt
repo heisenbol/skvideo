@@ -2,13 +2,13 @@
 plugin.tx_skvideo {
     settings {
     	# cat=content/skvideo/01; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:messagelabel
-        message = The videos of this site are served by YouTube or Vimeo. If you continue, YouTube or Vimeo will be able to track information about you (e.g. your IP, your viewing behavior etc)
+        message =
         # cat=content/skvideo/02; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:remembermelabel
-        rememberme = Remember my decision for 30 days using a cookie
+        rememberme =
         # cat=content/skvideo/03; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:cancellabel
-        cancel = Cancel
+        cancel =
         # cat=content/skvideo/04; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:continuelabel
-        continue = I agree, show the video
+        continue =
         # cat=content/skvideo/05; type=int [100-3000]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:maxpreviewheight
         max_preview_height = 500
         # cat=content/skvideo/06; type=int [100-3000]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:maxpreviewwidth
