@@ -100,6 +100,7 @@ class Helper
         }
         if (!$imgUrl)
             return $this->getPreviewImageUrlNoImage();
+
         return $imgUrl;
     }
 
@@ -137,15 +138,11 @@ class Helper
     return $this->retrieveImage($url, $code, $context, self::FILE_PREFIX_YOUTUBE);
   }
   private function getPreviewImageUrlVimeo($code, $context) {
-    $apiUrl = "https://vimeo.com/api/v2/video/$code.json";
-    $json = @file_get_contents($apiUrl);
-    $decoded = json_decode($json,true);
-    $url = $decoded[0]['thumbnail_large']??null;
-    return $this->retrieveImage($url, $code, $context, self::FILE_PREFIX_VIMEO);
-
+        // for vimeo we do not know the url for the thumbimage, so call it with null and true for the isVimeo parameter
+    return $this->retrieveImage(null, $code, $context, self::FILE_PREFIX_VIMEO, true);
   }
-  private function retrieveImage($url, $code, $context, $filePrefix) {
-    $retrieveResult = $this->retrieveThumbImage($url, $code, $filePrefix);
+  private function retrieveImage($url, $code, $context, $filePrefix, $isVimeo = false) {
+    $retrieveResult = $this->retrieveThumbImage($url, $code, $filePrefix, $isVimeo);
     if ($retrieveResult === false) {
       return false;
     }
@@ -181,7 +178,7 @@ class Helper
     $uploadDir = $this->getAbsoluteUploadDir();
     return $uploadDir.$this->getFilename($code, $filePrefix);
   }
-  private function retrieveThumbImage($url, $code, $filePrefix) {
+  private function retrieveThumbImage($url, $code, $filePrefix, $isVimeo = false) {
     $uploadDir = $this->getAbsoluteUploadDir();
 
     $dst = $this->getAbsoluteFilePath($code, $filePrefix);
@@ -194,8 +191,13 @@ class Helper
     }
     $imagesLifeTime = \Skar\Skvideo\ExtensionConfiguration::getSetting('imageslifetime',1209600);
     if (file_exists($dst) && (filemtime($dst) + $imagesLifeTime > time()) ) { // already downloaded and lifetime has not passed yet
-//      $this->log("tx_skvideo $dst already exists ");
-      return true; 
+      return true;
+    }
+    if ($isVimeo) {
+        // for vimeo we did not know the url of the thumb image, so url is null. Get it here
+        $apiUrl = "https://vimeo.com/api/v2/video/$code.json";
+        $decoded = $this->retrieveJsonUrl($apiUrl);
+        $url = $decoded[0]['thumbnail_large']??null;
     }
     if (!is_array($url)) {
       $url = [$url];

@@ -77,8 +77,6 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
             $imgPath = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_BE);
         }
 
-        
-
         // Set template file
         /** @var \TYPO3\CMS\Fluid\View\StandaloneView $fluidTemplate */
         $platformLink = '';
@@ -94,7 +92,7 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
         $fluidTmpl->setTemplatePathAndFilename($fluidTmplFilePath);
         $fluidTmpl->assign('title', $title);
         $fluidTmpl->assign('includeTitles', $includeTitles);
-        $fluidTmpl->assign('type', $type);
+        $fluidTmpl->assign('type', $type.$aaaa);
         $fluidTmpl->assign('platformLink', $platformLink);
         $fluidTmpl->assign('imgPath', $imgPath);
         $fluidTmpl->assign('videoCode', $code);
