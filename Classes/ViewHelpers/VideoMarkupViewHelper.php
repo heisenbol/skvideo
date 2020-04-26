@@ -113,22 +113,22 @@ class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractVi
             $embedMarkup = 'Unsupported video type '.htmlspecialchars($type, ENT_QUOTES, "UTF-8");
         }
 
-        $message = LocalizationUtility::translate('defaultmessagetext', 'skvideo', null, null, null);
+        $message = LocalizationUtility::translate('message', 'skvideo', null, null, null);
         if (trim($settings['message']??'')) {
             $message = trim($settings['message']);
         }
         // check if VIDEOPROVIDER placeholder needs to be replaced
         $message = str_replace ( 'VIDEOPROVIDER', $type ,$message );
 
-        $cancel = LocalizationUtility::translate('defaultcanceltext', 'skvideo', null, null, null);
+        $cancel = LocalizationUtility::translate('cancel', 'skvideo', null, null, null);
         if (trim($settings['cancel']??'')) {
             $cancel = trim($settings['cancel']);
         }
-        $continue = LocalizationUtility::translate('defaultcontinuetext', 'skvideo', null, null, null);
+        $continue = LocalizationUtility::translate('continue', 'skvideo', null, null, null);
         if (trim($settings['continue']??'')) {
             $continue = trim($settings['continue']);
         }
-        $rememberme = LocalizationUtility::translate('defaultremembermetext', 'skvideo', null, null, null);
+        $rememberme = LocalizationUtility::translate('rememberme', 'skvideo', null, null, null);
         if (trim($settings['rememberme']??'')) {
             $rememberme = trim($settings['rememberme']);
         }

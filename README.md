@@ -43,21 +43,21 @@ You can adapt the text of the confirmation modal dialog displayed to the user.
 #### Using Typoscript in setup section
 There are 4 keys that you can adapt:
 
-`defaultmessagetext`: This is the text the user is asked to agree before viewing the video. You can use HTML markup in here. You can also use a placeholder VIDEOPROVIDER which will be replaced with YOUTUBE or VIMEO according to the current video.
+`message`: This is the text the user is asked to agree before viewing the video. You can use HTML markup in here. You can also use a placeholder VIDEOPROVIDER which will be replaced with YOUTUBE or VIMEO according to the current video.
 
-`defaultremembermetext`: The text for the remember my decision checkbox
+`rememberme`: The text for the remember my decision checkbox
 
-`defaultcanceltext`: The text for the cancel button
+`cancel`: The text for the cancel button
 
-`defaultcontinuetext`: The text for the agree button 
+`continue`: The text for the agree button 
 
 To change these texts, use one or more of these keys in your setup section
 
-`plugin.tx_skvideo._LOCAL_LANG.default.defaultmessagetext` = New custom text VIDEOPROVIDER for default language
+`plugin.tx_skvideo._LOCAL_LANG.default.message` = New custom text VIDEOPROVIDER for default language
 
-`plugin.tx_skvideo._LOCAL_LANG.en.defaultmessagetext` = New custom text custom text for en
+`plugin.tx_skvideo._LOCAL_LANG.en.message` = New custom text custom text for en
 
-`plugin.tx_skvideo._LOCAL_LANG.de.defaultmessagetext` = New custom text custom text for de
+`plugin.tx_skvideo._LOCAL_LANG.de.message` = New custom text custom text for de
 
 
 #### Using constants
