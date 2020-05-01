@@ -1,5 +1,5 @@
 # skvideo
-TYPO3 content element to cache thumbnails of youtube/vimeo videos and play them after user confirmation. Responsive display. Works with css_styled_content and fluid_styled_content. No other dependencies (no jquery etc).
+TYPO3 content element to cache thumbnails of youtube/vimeo videos and play them after user confirmation. Responsive display. Works with or without fluid_styled_content. No other dependencies (no jquery etc).
 
 ## How it works
 The **editor** inserts a skvideo content element into a page. He needs to specify

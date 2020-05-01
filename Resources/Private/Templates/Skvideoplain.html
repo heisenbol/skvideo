@@ -1,0 +1,14 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"  data-namespace-typo3-fluid="true">
+{namespace skvideo=Skar\Skvideo\ViewHelpers}
+	<f:layout name="Default" />
+xxxxxxxxxxxxxxxxxxxxxxxxx
+	<f:section name="Main">
+		yyyyyyyyyyyyyyyyyyyyyyyyyyyy
+		<f:if condition="{data.header_layout} != 100">
+			<h2><f:link.typolink parameter="{data.header_link}" class="layout{data.header_layout}">{data.header}</f:link.typolink></h2>
+		</f:if>
+		<f:format.raw>{skvideo:videoMarkup(data: data, images:images)}</f:format.raw>
+	</f:section>
+</html>
+
+
