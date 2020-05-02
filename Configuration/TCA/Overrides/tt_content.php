@@ -1,16 +1,28 @@
 <?php
 // Adds the content element to the "Type" dropdown
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
-   array(
-      'Youtube / Vimeo Embed',
-      'skvideo_ce',
-      'EXT:skvideo/Resources/Public/Icons/Backend/ContentElement/player_icon.svg'
-   ),
-   'CType',
-   'skvideo'
+// see https://stackoverflow.com/questions/54789892/best-way-to-register-custom-content-element-to-type-dropdown why it is better to use addTcaSelectItem
+//\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
+//   array(
+//      'Youtube / Vimeo Embed',
+//      'skvideo_ce',
+//      'EXT:skvideo/Resources/Public/Icons/Backend/ContentElement/player_icon.svg'
+//   ),
+//   'CType',
+//   'skvideo'
+//);
+
+// Add 'newcontentelement' to tt_content.CType selector list
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+    'tt_content',
+    'CType',
+    [
+        'Youtube / Vimeo Embed', # Use localization 'LLL:EXT:your_extension_key/Resources/Private/Language/Backend.xlf:content_element.newcontentelement',
+        'skvideo_ce',
+        'skvideo-icon'
+    ],
+    'textmedia',
+    'after'
 );
-
-
 
 $GLOBALS['TCA']['tt_content']['types']['skvideo_ce'] = array(
    'showitem' => '
