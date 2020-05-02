@@ -3,31 +3,6 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2019-07-20T13:27:25Z" product-name="skvideo">
 		<header/>
 		<body>
-			<trans-unit id="messagelabel">
-				<source>Main text: This is the text the user is asked to agree before viewing the video. You can use the placeholder VIDEOPROVIDER which will be replaced with Youtube or Vimeo in the final text. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
-			</trans-unit>
-			<trans-unit id="remembermelabel">
-				<source>Remember decision: The text for the remember my decision checkbox. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
-			</trans-unit>
-			<trans-unit id="cancellabel">
-				<source>Cancel button text: The text for the cancel button. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
-			</trans-unit>
-			<trans-unit id="continuelabel">
-				<source>Agree button text: The text for the agree button. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
-			</trans-unit>
-			<trans-unit id="constants_subcategory_settings">
-				<source>skvideo settings</source>
-			</trans-unit>
-			<trans-unit id="maxpreviewheight">
-				<source>Max height of preview image</source>
-			</trans-unit>
-			<trans-unit id="maxpreviewwidth">
-				<source>Max width of preview image</source>
-			</trans-unit>
-			<trans-unit id="nocss">
-				<source>Do not add css file. You can copy and adapt Resources/Public/Css/styles.css to your own needs</source>
-			</trans-unit>
-
 			<trans-unit id="message">
 				<source>This video is served by VIDEOPROVIDER. If you continue, VIDEOPROVIDER will be able to track information about you (e.g. your IP, your viewing behavior etc)</source>
 			</trans-unit>

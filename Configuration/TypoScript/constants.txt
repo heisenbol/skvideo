@@ -1,19 +1,19 @@
-# customsubcategory=skvideo=LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:constants_subcategory_settings
+# customsubcategory=skvideo=LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:constants_subcategory_settings
 plugin.tx_skvideo {
     settings {
-        # cat=content/skvideo/01; type=int [100-3000]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:maxpreviewheight
+        # cat=content/skvideo/01; type=int [100-3000]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:maxpreviewheight
         max_preview_height = 500
-        # cat=content/skvideo/02; type=int [100-3000]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:maxpreviewwidth
+        # cat=content/skvideo/02; type=int [100-3000]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:maxpreviewwidth
         max_preview_width = 500
-        # cat=content/skvideo/03; type=boolean; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:nocss
+        # cat=content/skvideo/03; type=boolean; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:nocss
         nocss = 0
-    	# cat=content/skvideo/04; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:messagelabel
+    	# cat=content/skvideo/04; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:messagelabel
         message =
-        # cat=content/skvideo/05; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:remembermelabel
+        # cat=content/skvideo/05; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:remembermelabel
         rememberme =
-        # cat=content/skvideo/06; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:cancellabel
+        # cat=content/skvideo/06; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:cancellabel
         cancel =
-        # cat=content/skvideo/07; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang.xlf:continuelabel
+        # cat=content/skvideo/07; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:continuelabel
         continue =
 
     }

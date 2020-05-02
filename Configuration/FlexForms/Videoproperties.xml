@@ -13,7 +13,7 @@
 				 <el>
 					<settings.type>
 						<TCEforms>
-							<label>Video type</label>
+							<label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:videoproviderlabel</label>
 							<config>
 								<type>select</type>
 								<itemsProcFunc>Skar\Skvideo\ItemsProcFunc->user_getVideoTypeList</itemsProcFunc>
@@ -29,7 +29,7 @@
 					</settings.type>
 					<settings.sizeratio>
 						<TCEforms>
-							<label>Size ratio</label>
+							<label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:sizeratiolabel</label>
 							<config>
 								<type>select</type>
 								<renderType>selectSingle</renderType>
@@ -48,7 +48,7 @@
 					</settings.sizeratio>
 					<settings.includetitles>
 						<TCEforms>
-							<label>Include video titles</label>
+							<label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:includetitleslabel</label>
 							<config>
 								<type>check</type>
 								<default>1</default>
@@ -57,7 +57,7 @@
 					</settings.includetitles>
 					<settings.overridetitle>
 						<TCEforms>
-							<label>Override video title</label>
+							<label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:overridetitlelabel</label>
 							<config>
 								<type>input</type>
 								<default></default>
@@ -68,7 +68,7 @@
 
 					<settings.maxwidth>
 						<TCEforms>
-							<label>Max width in pixel</label>
+							<label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:maxwidthlabel</label>
 							<config>
 								<type>input</type>
 								<size>6</size>

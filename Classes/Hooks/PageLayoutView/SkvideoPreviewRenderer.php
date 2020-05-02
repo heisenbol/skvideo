@@ -4,7 +4,9 @@ namespace Skar\Skvideo\Hooks\PageLayoutView;
 use \TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface;
 use \TYPO3\CMS\Backend\View\PageLayoutView;
 use Skar\Skvideo\Helper;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+
 
 /**
  * Contains a preview rendering for the page module of CType="skvideo_skvideo_ce"
@@ -34,7 +36,7 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
       if ($row['CType'] === 'skvideo_ce') {
         $drawItem = false;
 //        $flexformService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Service\FlexFormService::class);
-        $flexFormService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Service\FlexFormService::class);
+        $flexFormService = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Service\FlexFormService::class);
         $settings = $flexFormService->convertFlexFormContentToArray($row['pi_flexform'])['settings']??NULL;
 
         if (!$settings) {
@@ -54,11 +56,11 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
         }
 
         if (!$type) {
-          $itemContent = 'Missing video type';
+          $itemContent = LocalizationUtility::translate('LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:missingtype', 'skvideo', null, null, null);
           return;
         }
         if (!$code) {
-          $itemContent = 'Missing video code';
+          $itemContent = LocalizationUtility::translate('LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:missingcode', 'skvideo', null, null, null);
           return;
         }
         

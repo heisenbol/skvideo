@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-07-20T13:27:25Z" product-name="skvideo">
+		<header/>
+		<body>
+			<trans-unit id="messagelabel">
+				<source>Main text: This is the text the user is asked to agree before viewing the video. You can use the placeholder VIDEOPROVIDER which will be replaced with Youtube or Vimeo in the final text. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
+			</trans-unit>
+			<trans-unit id="remembermelabel">
+				<source>Remember decision: The text for the remember my decision checkbox. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
+			</trans-unit>
+			<trans-unit id="cancellabel">
+				<source>Cancel button text: The text for the cancel button. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
+			</trans-unit>
+			<trans-unit id="continuelabel">
+				<source>Agree button text: The text for the agree button. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
+			</trans-unit>
+			<trans-unit id="constants_subcategory_settings">
+				<source>skvideo settings</source>
+			</trans-unit>
+			<trans-unit id="maxpreviewheight">
+				<source>Max height of preview image</source>
+			</trans-unit>
+			<trans-unit id="maxpreviewwidth">
+				<source>Max width of preview image</source>
+			</trans-unit>
+			<trans-unit id="nocss">
+				<source>Do not add css file. You can copy and adapt Resources/Public/Css/styles.css to your own needs</source>
+			</trans-unit>
+
+			<trans-unit id="listtypetitle">
+				<source>Youtube / Vimeo Embed</source>
+			</trans-unit>
+			<trans-unit id="codefieldlabel">
+				<source>Video Code (Youtube, Vimeo)</source>
+			</trans-unit>
+			<trans-unit id="customimagelabel">
+				<source>Custom preview image</source>
+			</trans-unit>
+			<trans-unit id="videoproviderlabel">
+				<source>Video provider</source>
+			</trans-unit>
+			<trans-unit id="sizeratiolabel">
+				<source>Size ratio</source>
+			</trans-unit>
+			<trans-unit id="includetitleslabel">
+				<source>Show video titles</source>
+			</trans-unit>
+			<trans-unit id="overridetitlelabel">
+				<source>Override video title</source>
+			</trans-unit>
+			<trans-unit id="maxwidthlabel">
+				<source>Max width in pixel (leave blank for full width)</source>
+			</trans-unit>
+
+			<trans-unit id="previewviewonvideosite">
+				<source>View on Video Site</source>
+			</trans-unit>
+			<trans-unit id="previewtypelabel">
+				<source>Video provider</source>
+			</trans-unit>
+			<trans-unit id="previewcodelabel">
+				<source>Video code</source>
+			</trans-unit>
+			<trans-unit id="previewtitlelabel">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="notshownlabel">
+				<source>hidden</source>
+			</trans-unit>
+
+			<trans-unit id="missingtype">
+				<source>Missing video provider</source>
+			</trans-unit>
+
+			<trans-unit id="missingcode">
+				<source>Missing video code</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
+

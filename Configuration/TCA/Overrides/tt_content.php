@@ -16,7 +16,7 @@
     'tt_content',
     'CType',
     [
-        'Youtube / Vimeo Embed', # Use localization 'LLL:EXT:your_extension_key/Resources/Private/Language/Backend.xlf:content_element.newcontentelement',
+        'LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:listtypetitle',
         'skvideo_ce',
         'skvideo-icon'
     ],
@@ -48,14 +48,14 @@ $GLOBALS['TCA']['tt_content']['types']['skvideo_ce'] = array(
    ',
    'columnsOverrides' => [
       'bodytext' => [
-         'label' => 'Video Code (Youtube, Vimeo)',
+         'label' => 'LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:codefieldlabel',
          'config' => [
             'type'=>'input',
             'enableRichtext' => false
          ],
       ],
       'image' => [
-         'label' => 'Custom preview image',
+         'label' => 'LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:customimagelabel',
          'config' => [
             'maxitems' => 1,
                 'overrideChildTca' => [
