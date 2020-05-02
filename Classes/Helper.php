@@ -42,20 +42,33 @@ class Helper
         }
     }
 
-  private function getTitlesCacheKey($code, $type) {
-    return self::CACHE_PREFIX.$code.'_'.$type;
-  }
+    private function getTitlesCacheKey($code, $type) {
+        // the cache identifiers follow a specific pattern. As I use the user provided video code, the user
+        // may type in something that is invalid for this pattern
+        // TYPO3 9 uses this check: return preg_match(self::PATTERN_ENTRYIDENTIFIER, $identifier)===1
+        // where PATTERN_ENTRYIDENTIFIER = '/^[a-zA-Z0-9_%\\-&]{1,250}$/'
+        // so do here a similar check
+        $identifier = self::CACHE_PREFIX.$code.'_'.$type;
+        if (preg_match('/^[a-zA-Z0-9_%\\-&]{1,250}$/', $identifier)!==1) {
+            return false;
+        }
+        return $identifier;
+    }
   public function getTitles($code, $type) {
     $cacheIdentifier = $this->getTitlesCacheKey($code, $type);
     $cache = GeneralUtility::makeInstance(CacheManager::class)->getCache(self::TITLES_CACHE_NAME);
-    if (($titles = $cache->get($cacheIdentifier)) === FALSE) {
+    $titles = FALSE;
+    if ($cacheIdentifier) {
+        $titles = $cache->get($cacheIdentifier);
+    }
+    if ($titles === FALSE) {
       if ($type == self::TYPE_YOUTUBE) {
         $titles = $this->getTitlesYoutube($code);
       }
       else if ($type == self::TYPE_VIMEO) {
         $titles = $this->getTitlesVimeo($code);
       }
-      if ($titles) {
+      if ($titles && $cacheIdentifier) {
         $cache->set($cacheIdentifier, $titles, [self::CACHE_TAG], \Skar\Skvideo\ExtensionConfiguration::getSetting('titleslifetime',1209600));
       }
 
