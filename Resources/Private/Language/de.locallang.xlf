@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2019-07-20T13:27:25Z" product-name="skvideo" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="message" approved="yes">
+        <source>This video is served by VIDEOPROVIDER. If you continue, VIDEOPROVIDER will be able to track information about you (e.g. your IP, your viewing behavior etc)</source>
+        <target state="final">Dieses Video wird von VIDEOPROVIDER geliefert. Wenn Sie fortfahren, wird VIDEOPROVIDER in der Lage sein, Informationen über Sie zu verfolgen (z.B. Ihre IP-Adresse, Ihr Anzeigeverhalten usw.)</target>
+      </trans-unit>
+      <trans-unit id="rememberme" approved="yes">
+        <source>Remember my decision for 30 days using a cookie</source>
+        <target state="final">Meine Entscheidung für 30 Tage mit einem Cookie merken</target>
+      </trans-unit>
+      <trans-unit id="cancel" approved="yes">
+        <source>Cancel</source>
+        <target state="final">Abbrechen</target>
+      </trans-unit>
+      <trans-unit id="continue" approved="yes">
+        <source>I agree, show the video</source>
+        <target state="final">Ich stimme zu, zeige das Video</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
