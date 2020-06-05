@@ -2,28 +2,6 @@
 defined('TYPO3_MODE') || die('Access denied.');
 
 
-$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
 
-$iconRegistry->registerIcon(
-    'skvideo-icon',
-    \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
-    ['source' => 'EXT:skvideo/Resources/Public/Icons/Backend/ContentElement/player_icon.svg']
-);
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
-    mod.wizards.newContentElement.wizardItems.common {
-       elements {
-          skvideo_ce {
-             iconIdentifier = skvideo-icon
-             title = SK Youtube/Vimeo  Video
-             description = Embed a Youtube/Vimeo Video
-             tt_content_defValues {
-                CType = skvideo_ce
-             }
-          }
-       }
-       show := addToList(skvideo_ce)
-    }
-');
 
 
