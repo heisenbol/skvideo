@@ -1,7 +1,6 @@
 <?php
 defined('TYPO3_MODE') || die('Access denied.');
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('skvideo', 'Configuration/TypoScript', 'SK Video');
 
 $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
 
