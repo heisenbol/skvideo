@@ -1,4 +1,5 @@
 <?php
+defined('TYPO3_MODE') or die();
 // Adds the content element to the "Type" dropdown
 // see https://stackoverflow.com/questions/54789892/best-way-to-register-custom-content-element-to-type-dropdown why it is better to use addTcaSelectItem
 //\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
