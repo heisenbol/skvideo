@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2019-07-20T13:27:25Z" product-name="skvideo" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="messagelabel" approved="yes">
+        <source>Main text: This is the text the user is asked to agree before viewing the video. You can use the placeholder VIDEOPROVIDER which will be replaced with Youtube or Vimeo in the final text. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
+        <target state="final">Haupttext: Dies ist der Text, dem der Benutzer vor dem Betrachten des Videos zustimmen soll. Du kannst den Platzhalter VIDEOPROVIDER verwenden, der im endgültigen Text durch Youtube oder Vimeo ersetzt wird. Du kannst HTML Markup verwenden, und musst entsprechende HTML Zeichen escapen.</target>
+      </trans-unit>
+      <trans-unit id="remembermelabel" approved="yes">
+        <source>Remember decision: The text for the remember my decision checkbox. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
+        <target state="final">Entscheidung merken: Der Text für das Kontrollkästchen "Meine Entscheidung merken". Du kannst HTML Markup verwenden, und musst entsprechende HTML Zeichen escapen.</target>
+      </trans-unit>
+      <trans-unit id="cancellabel" approved="yes">
+        <source>Cancel button text: The text for the cancel button. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
+        <target state="final">Text abbrechen: Der Text für den Abbrechen-Button. Du kannst HTML Markup verwenden, und musst entsprechende HTML Zeichen escapen.</target>
+      </trans-unit>
+      <trans-unit id="continuelabel" approved="yes">
+        <source>Agree button text: The text for the agree button. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
+        <target state="final">Text des Zustimmen Buttons: der Text des Buttons Zustimmen. Du kannst HTML Markup verwenden, und musst entsprechende HTML Zeichen escapen.</target>
+      </trans-unit>
+      <trans-unit id="constants_subcategory_settings" approved="yes">
+        <source>skvideo settings</source>
+        <target state="final">skvideo Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="maxpreviewheight" approved="yes">
+        <source>Max height of preview image</source>
+        <target state="final">Maximale Höhe des Vorschaubildes</target>
+      </trans-unit>
+      <trans-unit id="maxpreviewwidth" approved="yes">
+        <source>Max width of preview image</source>
+        <target state="final">Maximale Breite des Vorschaubildes</target>
+      </trans-unit>
+      <trans-unit id="nocss" approved="yes">
+        <source>Do not add css file. You can copy and adapt Resources/Public/Css/styles.css to your own needs</source>
+        <target state="final">Keine css Datei einfügen. Du kannst die Datei Resources/Public/Css/styles.css kopieren und den eigenen Anforderungen anpassen</target>
+      </trans-unit>
+      <trans-unit id="listtypetitle" approved="yes">
+        <source>Youtube / Vimeo Embed</source>
+        <target state="final">Youtube / Vimeo einbetten</target>
+      </trans-unit>
+      <trans-unit id="codefieldlabel" approved="yes">
+        <source>Video Code (Youtube, Vimeo)</source>
+        <target state="final">Video Kode (Youtube, Vimeo)</target>
+      </trans-unit>
+      <trans-unit id="customimagelabel" approved="yes">
+        <source>Custom preview image</source>
+        <target state="final">Eigenes Vorschaubild</target>
+      </trans-unit>
+      <trans-unit id="videoproviderlabel" approved="yes">
+        <source>Video provider</source>
+        <target state="final">Videoanbieter</target>
+      </trans-unit>
+      <trans-unit id="sizeratiolabel" approved="yes">
+        <source>Size ratio</source>
+        <target state="final">Größenverhältnis</target>
+      </trans-unit>
+      <trans-unit id="includetitleslabel" approved="yes">
+        <source>Show video titles</source>
+        <target state="final">Video Titel anzeigen</target>
+      </trans-unit>
+      <trans-unit id="overridetitlelabel" approved="yes">
+        <source>Override video title</source>
+        <target state="final">Eigenen Titel verwenden</target>
+      </trans-unit>
+      <trans-unit id="maxwidthlabel" approved="yes">
+        <source>Max width in pixel (leave blank for full width)</source>
+        <target state="final">Maximale Breite in Pixel (leer lassen für volle Breite)</target>
+      </trans-unit>
+      <trans-unit id="previewviewonvideosite" approved="yes">
+        <source>View on Video Site</source>
+        <target state="final">Beim Videoanbieter anzeigen</target>
+      </trans-unit>
+      <trans-unit id="previewtypelabel" approved="yes">
+        <source>Video provider</source>
+        <target state="final">Videoanbieter</target>
+      </trans-unit>
+      <trans-unit id="previewcodelabel" approved="yes">
+        <source>Video code</source>
+        <target state="final">Video Kode</target>
+      </trans-unit>
+      <trans-unit id="previewtitlelabel" approved="yes">
+        <source>Title</source>
+        <target state="final">Titel</target>
+      </trans-unit>
+      <trans-unit id="notshownlabel" approved="yes">
+        <source>hidden</source>
+        <target state="final">verborgen</target>
+      </trans-unit>
+      <trans-unit id="missingtype" approved="yes">
+        <source>Missing video provider</source>
+        <target state="final">Fehlender Videoanbieter</target>
+      </trans-unit>
+      <trans-unit id="missingcode" approved="yes">
+        <source>Missing video code</source>
+        <target state="final">Fehlender Video Kode</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
