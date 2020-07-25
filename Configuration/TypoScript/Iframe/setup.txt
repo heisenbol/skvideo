@@ -1,0 +1,6 @@
+lib.contentElement {
+    templateRootPaths {
+        501 = EXT:skvideo/Resources/Private/Fluid_styled_content/Templates/
+    }
+}
+
