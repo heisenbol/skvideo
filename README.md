@@ -41,11 +41,13 @@ and include your changed version in your site. In this case, you can instruct th
 You can adapt the text of the confirmation modal dialog displayed to the user. 
 
 #### Using Typoscript in setup section
-There are 4 keys that you can adapt:
+There are 5 keys that you can adapt:
 
 `message`: This is the text the user is asked to agree before viewing the video. You can use HTML markup in here. You can also use a placeholder VIDEOPROVIDER which will be replaced with YOUTUBE or VIMEO according to the current video.
 
-`rememberme`: The text for the remember my decision checkbox
+`rememberme`: The text for the remember my decision checkbox (only if the remember me option is not disabled via constant)
+
+`remembermesession`: The text for the remember my decision checkbox in case the cookie is set be stored only for the current session  (only if the remember me option is not disabled via constant)
 
 `cancel`: The text for the cancel button
 
@@ -65,14 +67,26 @@ You can also change these texts via constants, which makes sense only for single
  
 `plugin.tx_skvideo.settings.message`: This is the text the user is asked to agree before viewing the video. You can use HTML markup in here.
 
-`plugin.tx_skvideo.settings.rememberme`: The text for the remember my decision checkbox
+`plugin.tx_skvideo.settings.rememberme`: The text for the remember my decision checkbox. The number of days to store the cookies must be specified manually
+
+`plugin.tx_skvideo.settings.remembermesession`: The text for the remember my decision checkbox for session only storage
 
 `plugin.tx_skvideo.settings.cancel`: The text for the cancel button
 
 `plugin.tx_skvideo.settings.continue`: The text for the agree button
 
+### Other settings
+To disable the "remember my decision" option, set the constant
+`plugin.tx_skvideo.settings.disablerememberme = 1`
+
+To change the number of days the remember cookie is stored e.g. to 5 days, set
+`plugin.tx_skvideo.settings.remembermedays = 5`
+
+Default is 30 days. Set it to 0 to remember it only for the current session. Maximum is 180 days.
+
+
 
 ### Thumbnail cache lifetime
 The extension has 2 options to control the lifetime of the preview images and the associated video texts (title etc). Essentially they control how long these should be cached. Currently both values default to 1209600 seconds which is 2 weeks.
 
-You can change these options in the extensions manager, after clicking on the extension name.
+You can change these options under Settings, Extension Configuration.

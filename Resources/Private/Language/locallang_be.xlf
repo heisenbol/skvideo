@@ -7,7 +7,10 @@
 				<source>Main text: This is the text the user is asked to agree before viewing the video. You can use the placeholder VIDEOPROVIDER which will be replaced with Youtube or Vimeo in the final text. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
 			</trans-unit>
 			<trans-unit id="remembermelabel">
-				<source>Remember decision: The text for the remember my decision checkbox. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
+				<source>Remember decision text: The text for the remember my decision checkbox. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
+			</trans-unit>
+			<trans-unit id="remembermesessionlabel">
+				<source>Remember decision for session text: The text for the remember my decision checkbox if the cookie is stored only for the current session. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
 			</trans-unit>
 			<trans-unit id="disablerememberme">
 				<source>Disable remember me option: If enabled, no remember my decision option will be given to the user. The user has to accept every time.</source>
