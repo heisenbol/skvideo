@@ -9,6 +9,12 @@
 			<trans-unit id="remembermelabel">
 				<source>Remember decision: The text for the remember my decision checkbox. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
 			</trans-unit>
+			<trans-unit id="disablerememberme">
+				<source>Disable remember me option: If enabled, no remember my decision option will be given to the user. The user has to accept every time.</source>
+			</trans-unit>
+			<trans-unit id="remembermedays">
+				<source>Days to store remeber me cookie: Only in case remember me option is active. How many days shell the cookie be active. Default is 30 days. Set to 0 to store the cookie only for the current session. Max is 180 days.</source>
+			</trans-unit>
 			<trans-unit id="cancellabel">
 				<source>Cancel button text: The text for the cancel button. You can use HTML markup here, and must make sure to escape any special HTML characters.</source>
 			</trans-unit>
@@ -25,7 +31,7 @@
 				<source>Max width of preview image</source>
 			</trans-unit>
 			<trans-unit id="nocss">
-				<source>Do not add css file. You can copy and adapt Resources/Public/Css/styles.css to your own needs</source>
+				<source>Do not add css file: You can copy and adapt Resources/Public/Css/styles.css to your own needs</source>
 			</trans-unit>
 
 			<trans-unit id="listtypetitle">

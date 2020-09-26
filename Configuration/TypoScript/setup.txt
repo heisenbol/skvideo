@@ -42,6 +42,9 @@ plugin.tx_skvideo {
     settings {
         message = {$plugin.tx_skvideo.settings.message}
         rememberme = {$plugin.tx_skvideo.settings.rememberme}
+        fremembermesession = {$plugin.tx_skvideo.settings.fremembermesession}
+        disablerememberme = {$plugin.tx_skvideo.settings.disablerememberme}
+        remembermedays = {$plugin.tx_skvideo.settings.remembermedays}
         cancel = {$plugin.tx_skvideo.settings.cancel}
         continue = {$plugin.tx_skvideo.settings.continue}
         max_preview_height = {$plugin.tx_skvideo.settings.max_preview_height}

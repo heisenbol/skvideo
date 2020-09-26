@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var lastVideoMarkup = null;
 	var lastVideoProvider = null;
 	var lastCookieName = null;
+	var disablerememberme, remembermedays;
 	var rememberCookieName = "skvideoremember";
 	var videoElements = document.getElementsByClassName("sk-video-playbutton");
 	for (var i = 0; i < videoElements.length; i++) {
@@ -19,13 +20,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	    }
 	    var modalElement = document.querySelector(".sk-video-modal");
 		var message = this.getAttribute("data-message");
+		disablerememberme = this.getAttribute("data-disablerememberme");
+		if (disablerememberme === '1') {
+			disablerememberme = true;
+		}
+		else {
+			disablerememberme = false;
+		}
 	    if (modalElement == null) {
 	    	var rememberme = this.getAttribute("data-rememberme");
 	    	var cancel = this.getAttribute("data-cancel");
-	    	var continuemsg = this.getAttribute("data-continue");
+			var continuemsg = this.getAttribute("data-continue");
+
+			remembermedays = parseInt(this.getAttribute("data-remembermedays"));
+			if (isNaN(remembermedays) || remembermedays>180 || remembermedays < 0) {
+				remembermedays = 30;
+			}
+			var remembermeMarkup = '';
+			if (!disablerememberme) {
+				remembermeMarkup = '<label><input type="checkbox"> '+rememberme+'</label>';
+			}
+
 			var html = '<div class="sk-video-modal"><div><span class="disclaimer">'
-				+message+'</span><label><input type="checkbox"> '
-				+rememberme+'</label><br><button class="cancel">'
+				+message+'</span> '
+				+remembermeMarkup+'<br><button class="cancel">'
 				+cancel+'</button> <button class="continue">'
 				+continuemsg+'</button></div></div>';
 
@@ -37,7 +55,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			document.querySelector(".sk-video-modal .continue").addEventListener("click", function(){
 			  var modalElement = document.querySelector(".sk-video-modal");
 			  removeClass(modalElement, "active");
-			  handleRemember(lastCookieName);
+			  if (!disablerememberme) {
+				  handleRemember(lastCookieName);
+			  }
 			  lastContainer.innerHTML = lastVideoMarkup;
 			});
 		}
@@ -47,15 +67,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 		modalElement = document.querySelector(".sk-video-modal");
 
-
-		document.querySelector(".sk-video-modal input[type='checkbox']").checked=false;
+		if (!disablerememberme) {
+			document.querySelector(".sk-video-modal input[type='checkbox']").checked = false;
+		}
 		addClass(modalElement, "active");
 	};
 
 	function handleRemember(cookieName) {
 		var rememberChecked = document.querySelector(".sk-video-modal input[type='checkbox']").checked;
 		if (rememberChecked) {
-			setCookie(cookieName, 1, 30);
+			setCookie(cookieName, 1, remembermedays);
 		}
 	}
 	function setCookie(name,value,days) {

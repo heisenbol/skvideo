@@ -11,9 +11,13 @@ plugin.tx_skvideo {
         message =
         # cat=content/skvideo/05; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:remembermelabel
         rememberme =
-        # cat=content/skvideo/06; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:cancellabel
+        # cat=content/skvideo/06; type=boolean; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:disablerememberme
+        disablerememberme =
+        # cat=content/skvideo/07; type=int [0-180]; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:remembermedays
+        remembermedays = 30
+        # cat=content/skvideo/08; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:cancellabel
         cancel =
-        # cat=content/skvideo/07; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:continuelabel
+        # cat=content/skvideo/09; type=string; label= LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:continuelabel
         continue =
 
     }

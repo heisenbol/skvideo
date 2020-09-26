@@ -112,6 +112,11 @@ class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractVi
         else {
             $embedMarkup = 'Unsupported video type '.htmlspecialchars($type, ENT_QUOTES, "UTF-8");
         }
+        $disablerememberme = intval($settings['disablerememberme']);
+        $remembermedays = intval($settings['remembermedays']);
+        if ($remembermedays > 180 || $remembermedays < 0) {
+            $remembermedays = 30;
+        }
 
         $message = LocalizationUtility::translate('message', 'skvideo', null, null, null);
         if (trim($settings['message']??'')) {
@@ -128,15 +133,27 @@ class VideoMarkupViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractVi
         if (trim($settings['continue']??'')) {
             $continue = trim($settings['continue']);
         }
-        $rememberme = LocalizationUtility::translate('rememberme', 'skvideo', null, null, null);
-        if (trim($settings['rememberme']??'')) {
-            $rememberme = trim($settings['rememberme']);
+        $rememberme = '';
+        if (!$disablerememberme) {
+            if ($remembermedays === 0) {
+                $rememberme = LocalizationUtility::translate('remembermesession', 'skvideo', null, null, null);
+                if (trim($settings['remembermesession']??'')) {
+                    $rememberme = trim($settings['remembermesession']);
+                }
+            }
+            else {
+                $rememberme = LocalizationUtility::translate('rememberme', 'skvideo', [$remembermedays], null, null);
+                if (trim($settings['rememberme']??'')) {
+                    $rememberme = trim($settings['rememberme']);
+                }
+            }
         }
+
         $playButtonMarkup = "<div title='$hoverTitleEscaped' class='sk-video-playbutton' data-type='"
             .$type."' data-cancel='"
             .htmlspecialchars($cancel, ENT_QUOTES, "UTF-8")."' data-continue='"
             .htmlspecialchars($continue, ENT_QUOTES, "UTF-8")."' data-rememberme='"
-            .htmlspecialchars($rememberme, ENT_QUOTES, "UTF-8")."' data-message='"
+            .htmlspecialchars($rememberme, ENT_QUOTES, "UTF-8")."' data-remembermedays='$remembermedays' data-disablerememberme='$disablerememberme' data-message='"
             .htmlspecialchars($message, ENT_QUOTES, "UTF-8")."' data-videomarkup='"
             .htmlspecialchars($embedMarkup, ENT_QUOTES, "UTF-8")."'></div>";
 

@@ -7,7 +7,10 @@
 				<source>This video is served by VIDEOPROVIDER. If you continue, VIDEOPROVIDER will be able to track information about you (e.g. your IP, your viewing behavior etc)</source>
 			</trans-unit>
 			<trans-unit id="rememberme">
-				<source>Remember my decision for 30 days using a cookie</source>
+				<source>Remember my decision for %s days using a cookie</source>
+			</trans-unit>
+			<trans-unit id="remembermesession">
+				<source>Remember my decision for the current session</source>
 			</trans-unit>
 			<trans-unit id="cancel">
 				<source>Cancel</source>

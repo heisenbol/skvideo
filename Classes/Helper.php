@@ -34,6 +34,8 @@ class Helper
         );
         $this->MAX_WIDTH = intval($settings['max_preview_width']);
         $this->MAX_HEIGHT = intval($settings['max_preview_height']);
+        $this->MAX_HEIGHT = intval($settings['disablerememberme']);
+        $this->MAX_HEIGHT = intval($settings['remembermedays']);
         if ($this->MAX_WIDTH < 100) {
             $this->MAX_WIDTH = 500;
         }
