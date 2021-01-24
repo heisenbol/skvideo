@@ -206,7 +206,7 @@ class Helper
 
     $dst = $this->getAbsoluteFilePath($code, $filePrefix);
     if (!file_exists($uploadDir)) { // upload dir does not exist yet. Create it
-      $mkdirResult = mkdir($uploadDir);
+      $mkdirResult = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep($uploadDir);
       if ($mkdirResult === false) {
         $this->log("uploads/tx_skvideo folder does not exist and could not be created");
         return false;
