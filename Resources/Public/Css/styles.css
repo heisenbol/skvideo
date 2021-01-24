@@ -5,6 +5,7 @@
 .sk-video-container img {
 	display:block;
 	width:100%;
+	height:auto;
 }
 .sk-video-container {
 	position: relative;

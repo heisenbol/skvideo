@@ -29,6 +29,10 @@ tt_content.skvideo_ce {
           }
           as = images
     }
+    dataProcessing.1567071614 = Skar\Skvideo\DataProcessing\DataProcessor
+    dataProcessing.1567071614 {
+          as = skvideoOptions
+    }
 }
 
 

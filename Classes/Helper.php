@@ -44,6 +44,12 @@ class Helper
         }
     }
 
+    public function getMaxGeneratedWidth() {
+        return $this->MAX_WIDTH;
+    }
+    public function getMaxGeneratedHeight() {
+        return $this->MAX_HEIGHT;
+    }
     private function getTitlesCacheKey($code, $type) {
         // the cache identifiers follow a specific pattern. As I use the user provided video code, the user
         // may type in something that is invalid for this pattern
@@ -105,46 +111,46 @@ class Helper
     return $decoded;
   }
 
-    public function getPreviewImageUrl($code, $type, $context) {
-        $imgUrl = null;
+    public function getPreviewImagePath($code, $type, $context) {
+        $imgPath = null;
         if ($type == self::TYPE_YOUTUBE) {
-            $imgUrl = $this->getPreviewImageUrlYoutube($code, $context);
+            $imgPath = $this->getPreviewImagePathYoutube($code, $context);
         }
         if ($type == self::TYPE_VIMEO) {
-            $imgUrl = $this->getPreviewImageUrlVimeo($code, $context);
+            $imgPath = $this->getPreviewImagePathVimeo($code, $context);
         }
-        if (!$imgUrl)
-            return $this->getPreviewImageUrlNoImage();
+        if (!$imgPath)
+            return $this->getPreviewImagePathNoImage();
 
-        return $imgUrl;
+        return $imgPath;
     }
 
-  public function getCustomPreviewImageUrl($fileRef, $context) {
-    $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-    $imageService= $objectManager->get(ImageService::class);
-    $cropString = $fileRef->getProperty('crop');
-    $cropVariantCollection = \TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection::create($cropString);
-    $cropArea = $cropVariantCollection->getCropArea('default');
-    if ($context === self::CONTEXT_FE) {
-      // https://rolf-thomas.de/how-to-generate-images-in-a-typo3-extbase-controller
-      //$imagePath = $fileRef->getOriginalFile()->getPublicUrl();
-      $processedImage = $imageService->applyProcessingInstructions(
-          $fileRef, 
-            [
-              'maxWidth' => $this->MAX_WIDTH,
-              'maxHeight' => $this->MAX_HEIGHT,
-              'crop' => $cropArea->isEmpty() ? null : $cropArea->makeAbsoluteBasedOnFile($fileRef)
-            ]
-          );
-      return $imageService->getImageUri($processedImage);
-    }
-    else {
-      return $fileRef->getOriginalFile()->getPublicUrl();
-    }
+  public function getCustomPreviewImagePath($fileRef, $context) {
+        return $fileRef->getForLocalProcessing();
+//    $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+//    $imageService= $objectManager->get(ImageService::class);
+//    $cropString = $fileRef->getProperty('crop');
+//    $cropVariantCollection = \TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection::create($cropString);
+//    $cropArea = $cropVariantCollection->getCropArea('default');
+//    if ($context === self::CONTEXT_FE) {
+//      // https://rolf-thomas.de/how-to-generate-images-in-a-typo3-extbase-controller
+//      //$imagePath = $fileRef->getOriginalFile()->getPublicUrl();
+//      $processedImage = $imageService->applyProcessingInstructions(
+//          $fileRef,
+//            [
+//              'maxWidth' => $this->MAX_WIDTH,
+//              'maxHeight' => $this->MAX_HEIGHT,
+//              'crop' => $cropArea->isEmpty() ? null : $cropArea->makeAbsoluteBasedOnFile($fileRef)
+//            ]
+//          );
+//      return $imageService->getImageUri($processedImage);
+//    }
+//    else {
+//      return $fileRef->getOriginalFile()->getPublicUrl();
+//    }
   }
 
-  private function getPreviewImageUrlYoutube($code, $context) {
-
+  private function getPreviewImagePathYoutube($code, $context) {
     $url = [
       "https://img.youtube.com/vi/$code/maxresdefault.jpg",
       "https://img.youtube.com/vi/$code/mqdefault.jpg",
@@ -152,7 +158,7 @@ class Helper
     ];
     return $this->retrieveImage($url, $code, $context, self::FILE_PREFIX_YOUTUBE);
   }
-  private function getPreviewImageUrlVimeo($code, $context) {
+  private function getPreviewImagePathVimeo($code, $context) {
         // for vimeo we do not know the url for the thumbimage, so call it with null and true for the isVimeo parameter
     return $this->retrieveImage(null, $code, $context, self::FILE_PREFIX_VIMEO, true);
   }
@@ -161,21 +167,25 @@ class Helper
     if ($retrieveResult === false) {
       return false;
     }
-    if ($context === self::CONTEXT_FE) {
-      $maxWidth = $this->MAX_WIDTH;
-      $maxHeight = $this->MAX_HEIGHT;
-
-      return $this->getImageUrl($this->getAbsoluteFilePath($code, $filePrefix), $maxWidth, $maxHeight, 90);
-    }
-    else {
-      return $this->getAbsoluteFilePath($code, $filePrefix);
-    }
+    return $this->getAbsoluteFilePath($code, $filePrefix);
+//    if ($context === self::CONTEXT_FE) {
+//      $maxWidth = $this->MAX_WIDTH;
+//      $maxHeight = $this->MAX_HEIGHT;
+//
+//      return $this->getImageUrl($this->getAbsoluteFilePath($code, $filePrefix), $maxWidth, $maxHeight, 90);
+//    }
+//    else {
+//      return $this->getAbsoluteFilePath($code, $filePrefix);
+//    }
   }
-  private function getPreviewImageUrlNoImage() {
-    return PathUtility::getAbsoluteWebPath(GeneralUtility::getFileAbsFileName( 'EXT:skvideo/Resources/Public/Images/nopreview.png'));
+  private function getPreviewImagePathNoImage() {
+    return GeneralUtility::getFileAbsFileName( 'EXT:skvideo/Resources/Public/Images/nopreview.png');
 
   }
-
+//    private function getPreviewImageUrlNoImage() {
+//        return PathUtility::getAbsoluteWebPath(GeneralUtility::getFileAbsFileName( 'EXT:skvideo/Resources/Public/Images/nopreview.png'));
+//
+//    }
   private function getImageUrl($absoluteFilePath, $maxWidth, $maxHeight, $quality = 95) {
 //    $img = array();
 //    $img['image.']['file.']['maxH']   = $maxWidth;

@@ -73,10 +73,10 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
             }
         }
         if ($customPreviewImage) {
-            $imgPath = $helper->getCustomPreviewImageUrl($customPreviewImage, Helper::CONTEXT_BE);
+            $imgPath = $helper->getCustomPreviewImagePath($customPreviewImage, Helper::CONTEXT_BE);
         }
         else {
-            $imgPath = $helper->getPreviewImageUrl($code, $type, Helper::CONTEXT_BE);
+            $imgPath = $helper->getPreviewImagePath($code, $type, Helper::CONTEXT_BE);
         }
 
         // Set template file
