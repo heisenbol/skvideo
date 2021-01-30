@@ -1,4 +1,6 @@
 # cat=basic/enable; type=int; label=Lifetime of titles (sec)
 titleslifetime = 
 # cat=basic/enable; type=int; label=Lifetime of images (sec)
-imageslifetime = 
+imageslifetime =
+# cat=basic/enable; type=string; label=Optional Youtube API key to embed playlists
+ytapikey =

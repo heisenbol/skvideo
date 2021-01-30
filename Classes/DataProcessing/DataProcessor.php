@@ -56,7 +56,7 @@ class DataProcessor implements DataProcessorInterface
                     $titles = $helper->getTitles($code, $type);
                     $videoTitle = $titles['title']??null;
                     $videoAuthor = $titles['author']??null;
-                    $result['hoverTitle'] = $videoTitle.', '.$videoAuthor;
+                    $result['hoverTitle'] = $videoTitle.($videoAuthor?', '.$videoAuthor:'');
                 }
                 else {
                     $result['hoverTitle'] = $videoTitle;
@@ -104,6 +104,9 @@ class DataProcessor implements DataProcessorInterface
             if ($type == Helper::TYPE_YOUTUBE) {
                 $embedMarkup = '<iframe width="'.$embedWidth.'" height="'.$embedHeight.'" src="https://www.youtube-nocookie.com/embed/'.$code.'?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
             }
+            else if ($type == Helper::TYPE_YOUTUBE_LIST) {
+                $embedMarkup = '<iframe width="'.$embedWidth.'" height="'.$embedHeight.'" src="https://www.youtube-nocookie.com/embed/videoseries?list='.$code.'&autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            }
             else if ($type == Helper::TYPE_VIMEO) {
                 $embedMarkup = '<iframe src="https://player.vimeo.com/video/'.$code.'?autoplay=1" width="'.$embedWidth.'" height="'.$embedHeight.'" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
             }
@@ -126,7 +129,19 @@ class DataProcessor implements DataProcessorInterface
                 $message = trim($ceSettings['message']);
             }
             // check if VIDEOPROVIDER placeholder needs to be replaced
-            $message = str_replace ( 'VIDEOPROVIDER', $type ,$message );
+            $providerName = '';
+            switch ($type) {
+                case Helper::TYPE_YOUTUBE:
+                case Helper::TYPE_YOUTUBE_LIST:
+                    $providerName = 'YouTube';
+                    break;
+                case Helper::TYPE_VIMEO:
+                    $providerName = 'Vimeo';
+                    break;
+                default:
+                    $providerName = 'Unknown provider';
+            }
+            $message = str_replace ( 'VIDEOPROVIDER', $providerName ,$message );
 
             $result['message'] = $message;
 

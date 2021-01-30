@@ -12,6 +12,7 @@ class ItemsProcFunc
         $optionList = [];
         $optionList[] = ["Youtube",Helper::TYPE_YOUTUBE];
         $optionList[] = ["Vimeo",Helper::TYPE_VIMEO];
+        $optionList[] = ["Youtube Playlist",Helper::TYPE_YOUTUBE_LIST];
 
         $config['items'] = $optionList;
         return $config;

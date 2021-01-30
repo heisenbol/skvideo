@@ -13,8 +13,11 @@ class Helper
 {
   const TYPE_YOUTUBE = 'YOUTUBE';
   const TYPE_VIMEO = 'VIMEO';
+    const TYPE_YOUTUBE_LIST = 'YOUTUBE PLAYLIST';
   const FILE_PREFIX_YOUTUBE = 'yt_';
   const FILE_PREFIX_VIMEO = 'vi_';
+    const FILE_PREFIX_YOUTUBE_PL = 'yp_';
+
 
   const CONTEXT_BE = 'BE';
   const CONTEXT_FE = 'FE';
@@ -73,6 +76,9 @@ class Helper
       if ($type == self::TYPE_YOUTUBE) {
         $titles = $this->getTitlesYoutube($code);
       }
+      else if ($type == self::TYPE_YOUTUBE_LIST) {
+          $titles = $this->getTitlesYoutubeList($code);
+      }
       else if ($type == self::TYPE_VIMEO) {
         $titles = $this->getTitlesVimeo($code);
       }
@@ -88,6 +94,31 @@ class Helper
     $oembedUrl = 'https://www.youtube.com/oembed?url=http%3A//youtube.com/watch%3Fv%3D'.$code.'&format=json';
     return $this->retrieveTitles($oembedUrl);
   }
+  private function getYoutubeListApiUrl($code) {
+      $apiKey = \Skar\Skvideo\ExtensionConfiguration::getSetting('ytapikey',null);
+      if (!$apiKey) { // youtube play list info can only be retrieved via API access, using a google API key for YouTube Data API v3
+          $this->log("tx_skvideo youtube play list info can only be retrieved via API access, using a google API key for YouTube Data API v3. Set API key in extension settings");
+          return null;
+      }
+      return 'https://www.googleapis.com/youtube/v3/playlists?part=snippet&id='.$code.'&key='.$apiKey;
+  }
+    private function getTitlesYoutubeList($code) {
+        $apiUrl = $this->getYoutubeListApiUrl($code);
+        if (!$apiUrl) {
+            return null;
+        }
+        $decoded = $this->retrieveJsonUrl($apiUrl);
+        if (!$decoded) {
+            return null;
+        }
+        $title = $decoded['items'][0]['snippet']['title']??null;
+
+        if ($title) {
+            return ['title'=>$title, 'author'=>null];
+        }
+        return null;
+    }
+
   private function getTitlesVimeo($code) {
     $oembedUrl = 'https://vimeo.com/api/oembed.json?url=https://vimeo.com/'.$code;
     return $this->retrieveTitles($oembedUrl);
@@ -115,6 +146,9 @@ class Helper
         $imgPath = null;
         if ($type == self::TYPE_YOUTUBE) {
             $imgPath = $this->getPreviewImagePathYoutube($code, $context);
+        }
+        if ($type == self::TYPE_YOUTUBE_LIST) {
+            $imgPath = $this->getPreviewImagePathYoutubeList($code, $context);
         }
         if ($type == self::TYPE_VIMEO) {
             $imgPath = $this->getPreviewImagePathVimeo($code, $context);
@@ -162,8 +196,12 @@ class Helper
         // for vimeo we do not know the url for the thumbimage, so call it with null and true for the isVimeo parameter
     return $this->retrieveImage(null, $code, $context, self::FILE_PREFIX_VIMEO, true);
   }
-  private function retrieveImage($url, $code, $context, $filePrefix, $isVimeo = false) {
-    $retrieveResult = $this->retrieveThumbImage($url, $code, $filePrefix, $isVimeo);
+    private function getPreviewImagePathYoutubeList($code, $context) {
+        // for youtube list we do not know the url for the thumbimage, so call it with null and true for the isYoutubeList parameter
+        return $this->retrieveImage(null, $code, $context, self::FILE_PREFIX_YOUTUBE_PL, false, true);
+    }
+  private function retrieveImage($url, $code, $context, $filePrefix, $isVimeo = false, $isYoutubeList = false) {
+    $retrieveResult = $this->retrieveThumbImage($url, $code, $filePrefix, $isVimeo, $isYoutubeList);
     if ($retrieveResult === false) {
       return false;
     }
@@ -211,7 +249,7 @@ class Helper
     $uploadDir = $this->getAbsoluteUploadDir();
     return $uploadDir.$this->getFilename($code, $filePrefix);
   }
-  private function retrieveThumbImage($url, $code, $filePrefix, $isVimeo = false) {
+  private function retrieveThumbImage($url, $code, $filePrefix, $isVimeo = false, $isYoutubeList = false) {
     $uploadDir = $this->getAbsoluteUploadDir();
 
     $dst = $this->getAbsoluteFilePath($code, $filePrefix);
@@ -232,9 +270,22 @@ class Helper
         $decoded = $this->retrieveJsonUrl($apiUrl);
         $url = $decoded[0]['thumbnail_large']??null;
     }
-    if (!is_array($url)) {
+      if ($isYoutubeList) {
+          // for youtube list we did not know the url of the thumb image, so url is null. Get it here
+          $apiUrl = $this->getYoutubeListApiUrl($code);
+          $decoded = $this->retrieveJsonUrl($apiUrl);
+          $url = $decoded['items'][0]['snippet']['thumbnails']['maxres']['url']??null;
+      }
+    if (!is_array($url) && $url) {
       $url = [$url];
     }
+
+    // at this point, $url should be an array of urls. Make sure
+      if (!is_array($url)) {
+          $this->log("tx_skvideo no url for retrieving thumbnail image, for prefix ".$filePrefix);
+          return false;
+      }
+
     $file = @file_get_contents($url[0]); // up to 3 urls
     if ($file === FALSE && count($url) > 1) {
       $file = @file_get_contents($url[1]);
