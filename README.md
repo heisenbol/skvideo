@@ -86,7 +86,9 @@ Default is 30 days. Set it to 0 to remember it only for the current session. Max
 
 
 
-### Thumbnail cache lifetime
+### Thumbnail cache lifetime and youtube playlists API key
 The extension has 2 options to control the lifetime of the preview images and the associated video texts (title etc). Essentially they control how long these should be cached. Currently both values default to 1209600 seconds which is 2 weeks.
 
-You can change these options under Settings, Extension Configuration.
+Since version 1.1.0, you can also embed youtube playlists. But for playlists you need a valid Google API key for YouTube Data API v3.
+
+You can change these options under Settings, Extension Configuration for skvideo.
