@@ -92,3 +92,17 @@ The extension has 2 options to control the lifetime of the preview images and th
 Since version 1.1.0, you can also embed youtube playlists. But for playlists you need a valid Google API key for YouTube Data API v3.
 
 You can change these options under Settings, Extension Configuration for skvideo.
+
+
+### Overriding the template
+You can override the provided fluid template. It uses only the Templates folder. For fluid_styled_content, create a new folder anywhere you want (e.g. fileadmin/skvideo/Templates) and in there put a file named `Skvideofsc.html`
+
+Then add to your setup section the following
+
+`tt_content.skvideo_ce.partialRootPaths.20 = fileadmin/skvideo/Partials/`
+
+For the content of the `Skvideo.html` file, have a look into the file provided by the extension.
+
+Overriding the template makes not much sense though. The markup, the used classnames and the data-* attributes have to be in the way they are already used. The only thing that might interest you is the way the preview image is rendered (e.g., in case you want to provide multiple versions of the image via srcset).
+
+In case you just want to override some of the styling (e.g. the play icon or the colors) you should just change the css.

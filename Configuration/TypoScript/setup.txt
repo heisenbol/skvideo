@@ -9,12 +9,15 @@
 [skextension.isLoaded('fluid_styled_content') == 1 and {$styles.content.textmedia.maxW} > 10]
     tt_content.skvideo_ce =< lib.contentElement
     tt_content.skvideo_ce.templateName = Skvideofsc
+    tt_content.skvideo_ce.partialRootPaths.10 = EXT:skvideo/Resources/Private/Partials/
 [ELSE]
     tt_content.skvideo_ce = FLUIDTEMPLATE
     tt_content.skvideo_ce.templateName = Skvideoplain
-    tt_content.skvideo_ce.layoutRootPaths.0 = EXT:skvideo/Resources/Private/Layouts/
-    tt_content.skvideo_ce.partialRootPaths.0 = EXT:skvideo/Resources/Private/Partials/
+    tt_content.skvideo_ce.layoutRootPaths.10 = EXT:skvideo/Resources/Private/Layouts/
+    tt_content.skvideo_ce.partialRootPaths.10 = EXT:skvideo/Resources/Private/Partials/
+    tt_content.skvideo_ce.templateRootPaths.10 = EXT:skvideo/Resources/Private/Templates/
 [END]
+
 
 
 

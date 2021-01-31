@@ -1,32 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-{namespace skvideo=Skar\Skvideo\ViewHelpers}
 	<f:layout name="Default" />
 	<f:section name="Main">
-		<div class="sk-video-supercontainer" style="max-width:{skvideoOptions.maxWidth}">
-			<div class="sk-video-container ratio{skvideoOptions.ratio}">
-				<f:if condition="{images}">
-					<f:then>
-						<f:image image="{images.0}"  title="{skvideoOptions.hoverTitle}" alt="{skvideoOptions.hoverTitle}" maxWidth="{skvideoOptions.maxGeneratedWidth}" maxHeight="{skvideoOptions.maxGeneratedHeight}" />
-					</f:then>
-					<f:else>
-						<f:image src="{skvideoOptions.imgPathOriginal}" title="{skvideoOptions.hoverTitle}" alt="{skvideoOptions.hoverTitle}" maxWidth="{skvideoOptions.maxGeneratedWidth}" maxHeight="{skvideoOptions.maxGeneratedHeight}" />
-					</f:else>
-				</f:if>
-
-				<f:if condition="{skvideoOptions.includetitles}">
-					<div class="sk-video-titlecontainer" title="{skvideoOptions.hoverTitle}">{skvideoOptions.videoTitle}</div>
-				</f:if>
-
-				<div title='{skvideoOptions.hoverTitle}' class='sk-video-playbutton' data-type='{skvideoOptions.type}'
-					 data-cancel='{skvideoOptions.cancel}'
-					 data-continue='{skvideoOptions.continue}'
-					 data-rememberme='{skvideoOptions.rememberme}'
-					 data-remembermedays='{skvideoOptions.remembermedays}'
-					 data-disablerememberme='{skvideoOptions.disablerememberme}'
-					 data-message='{skvideoOptions.message}'
-					 data-videomarkup='{skvideoOptions.embedMarkup}'>
-				</div>
-			</div>
-		</div>
+		<f:render partial="Skvideo" arguments="{_all}" />
 	</f:section>
 </html>
