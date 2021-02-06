@@ -85,6 +85,14 @@ To change the number of days the remember cookie is stored e.g. to 5 days, set
 Default is 30 days. Set it to 0 to remember it only for the current session. Maximum is 180 days.
 
 
+To add an additional class name to the cancel and/or the continue button, you can use these constants
+
+`plugin.tx_skvideo.settings.cancelbutton_additionalclass = btn`
+
+`plugin.tx_skvideo.settings.continuebutton_additionalclass = btn danger`
+ 
+
+
 
 ### Thumbnail cache lifetime and youtube playlists API key
 The extension has 2 options to control the lifetime of the preview images and the associated video texts (title etc). Essentially they control how long these should be cached. Currently both values default to 1209600 seconds which is 2 weeks.

@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	    	var cancel = this.getAttribute("data-cancel");
 			var continuemsg = this.getAttribute("data-continue");
 
+			var continueclass = this.getAttribute("data-continueclass");
+			var cancelclass = this.getAttribute("data-cancelclass");
+
 			remembermedays = parseInt(this.getAttribute("data-remembermedays"));
 			if (isNaN(remembermedays) || remembermedays>180 || remembermedays < 0) {
 				remembermedays = 30;
@@ -43,8 +46,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 			var html = '<div class="sk-video-modal"><div><span class="disclaimer">'
 				+message+'</span> '
-				+remembermeMarkup+'<br><button class="cancel">'
-				+cancel+'</button> <button class="continue">'
+				+remembermeMarkup+'<br><button class="cancel '+cancelclass+'">'
+				+cancel+'</button> <button class="continue '+continueclass+'">'
 				+continuemsg+'</button></div></div>';
 
 			appendHtml(document.body, html);

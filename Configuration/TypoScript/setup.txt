@@ -56,5 +56,7 @@ plugin.tx_skvideo {
         continue = {$plugin.tx_skvideo.settings.continue}
         max_preview_height = {$plugin.tx_skvideo.settings.max_preview_height}
         max_preview_width = {$plugin.tx_skvideo.settings.max_preview_width}
+        cancelbutton_additionalclass = {$plugin.tx_skvideo.settings.cancelbutton_additionalclass}
+        continuebutton_additionalclass = {$plugin.tx_skvideo.settings.continuebutton_additionalclass}
     }
 }

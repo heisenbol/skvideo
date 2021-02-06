@@ -181,7 +181,8 @@ class DataProcessor implements DataProcessorInterface
             $result['flexformSettings'] = $flexformSettings;
             $result['settings'] = $ceSettings;
         }
-
+        $result['cancelbutton_additionalclass'] = $ceSettings['cancelbutton_additionalclass']??'';
+        $result['continuebutton_additionalclass'] = $ceSettings['continuebutton_additionalclass']??'';
         $processedData['skvideoOptions'] = $result;
         return $processedData;
     }

@@ -85,6 +85,13 @@
 			<trans-unit id="missingcode">
 				<source>Missing video code</source>
 			</trans-unit>
+			<trans-unit id="cancelbutton_additionalclass">
+				<source>Additional class for the cancel button</source>
+			</trans-unit>
+			<trans-unit id="continuebutton_additionalclass">
+				<source>Additional class for the continue button</source>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>
