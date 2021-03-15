@@ -58,6 +58,10 @@
 			<trans-unit id="overridetitlelabel">
 				<source>Override video title</source>
 			</trans-unit>
+			<trans-unit id="startatlabel">
+				<source>Start video at time index (seconds). Does not apply for playlists.</source>
+			</trans-unit>
+
 			<trans-unit id="maxwidthlabel">
 				<source>Max width in pixel (leave blank for full width)</source>
 			</trans-unit>

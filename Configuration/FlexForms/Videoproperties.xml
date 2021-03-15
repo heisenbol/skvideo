@@ -64,7 +64,17 @@
 							</config>
 						</TCEforms>
 					</settings.overridetitle>
-
+					 <settings.startat>
+						 <TCEforms>
+							 <label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:startatlabel</label>
+							 <config>
+								 <type>input</type>
+								 <size>6</size>
+								 <eval>int</eval>
+								 <default>0</default>
+							 </config>
+						 </TCEforms>
+					 </settings.startat>
 
 					<settings.maxwidth>
 						<TCEforms>

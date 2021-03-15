@@ -100,15 +100,17 @@ class DataProcessor implements DataProcessorInterface
                 \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
                 'skvideo'
             );
-
+            $startAt = intval($flexformSettings['startat'] ?? 0);
             if ($type == Helper::TYPE_YOUTUBE) {
-                $embedMarkup = '<iframe width="'.$embedWidth.'" height="'.$embedHeight.'" src="https://www.youtube-nocookie.com/embed/'.$code.'?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                $startAtPart = $startAt?'&start='.$startAt:'';
+                $embedMarkup = '<iframe width="'.$embedWidth.'" height="'.$embedHeight.'" src="https://www.youtube-nocookie.com/embed/'.$code.'?autoplay=1&rel=0'.$startAtPart.'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
             }
             else if ($type == Helper::TYPE_YOUTUBE_LIST) {
                 $embedMarkup = '<iframe width="'.$embedWidth.'" height="'.$embedHeight.'" src="https://www.youtube-nocookie.com/embed/videoseries?list='.$code.'&autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
             }
             else if ($type == Helper::TYPE_VIMEO) {
-                $embedMarkup = '<iframe src="https://player.vimeo.com/video/'.$code.'?autoplay=1" width="'.$embedWidth.'" height="'.$embedHeight.'" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+                $startAtPart = $startAt?'#t='.$startAt.'s':'';
+                $embedMarkup = '<iframe src="https://player.vimeo.com/video/'.$code.'?autoplay=1'.$startAtPart.'" width="'.$embedWidth.'" height="'.$embedHeight.'" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
             }
             else {
                 $embedMarkup = 'Unsupported video type '.htmlspecialchars($type, ENT_QUOTES, "UTF-8");
