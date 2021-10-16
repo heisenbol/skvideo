@@ -14,4 +14,12 @@ class ExtensionManagementUtilityProvider
         return ExtensionManagementUtility::isLoaded($extensionKey);
     }
 
+    /**
+     * @param $val
+     * @return int
+     */
+    public function intVal($val): int
+    {
+        return intval($val);
+    }
 }

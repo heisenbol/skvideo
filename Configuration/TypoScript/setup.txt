@@ -6,7 +6,7 @@
 # fluid_styled_content may be loaded, but it's typoscript template may not be included in the current page tree
 # So it is not sufficient to check if it is loaded. Ideally I would be able to check if lib.contentElement is defined, but I don't know how to do that.
 # So I check if a constant defined by fluid_styled_content has a reasonable value, and conclude in this case that fluid_styled_content is loaded and included in the page tree
-[skextension.isLoaded('fluid_styled_content') == 1 and {$styles.content.textmedia.maxW} > 10]
+[skextension.isLoaded('fluid_styled_content') == 1 and skextension.intVal('{$styles.content.textmedia.maxW}') > 10]
     tt_content.skvideo_ce =< lib.contentElement
     tt_content.skvideo_ce.templateName = Skvideofsc
     tt_content.skvideo_ce.partialRootPaths.10 = EXT:skvideo/Resources/Private/Partials/
