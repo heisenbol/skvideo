@@ -1,5 +1,5 @@
 <?php
-namespace Skar\Skvideo;
+namespace Skaras\Skvideo;
 
 /**
  * Userfunc to render alternative label for media elements

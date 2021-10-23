@@ -1,5 +1,5 @@
 {
-  "name": "skar/skvideo",
+  "name": "skaras/skvideo",
   "type": "typo3-cms-extension",
   "description": "TYPO3 content element to cache thumbnails of Youtube & Vimeo videos and play them after user confirmation. Options to remember user decision via cookie. Responsive display. Works with and without fluid_styled_content. No other dependencies.",
   "license": "GPL-2.0-or-later",
@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Skar\\Skvideo\\": "Classes/"
+      "Skaras\\Skvideo\\": "Classes/"
     }
   },
   "extra": {

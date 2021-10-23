@@ -1,7 +1,7 @@
 <?php
-namespace Skar\Skvideo\DataProcessing;
+namespace Skaras\Skvideo\DataProcessing;
 
-use Skar\Skvideo\Helper;
+use Skaras\Skvideo\Helper;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;

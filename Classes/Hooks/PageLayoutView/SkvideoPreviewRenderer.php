@@ -1,9 +1,9 @@
 <?php
-namespace Skar\Skvideo\Hooks\PageLayoutView;
+namespace Skaras\Skvideo\Hooks\PageLayoutView;
 
 use \TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface;
 use \TYPO3\CMS\Backend\View\PageLayoutView;
-use Skar\Skvideo\Helper;
+use Skaras\Skvideo\Helper;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 

@@ -18,7 +18,7 @@ $EM_CONF[$_EXTKEY] = [
     ],
     'autoload' => [
         'psr-4' => [
-            'Skar\\Skvideo\\' => 'Classes'
+            'Skaras\\Skvideo\\' => 'Classes'
         ],
     ],
 ];

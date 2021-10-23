@@ -1,5 +1,5 @@
 <?php
-namespace Skar\Skvideo\ExpressionLanguage;
+namespace Skaras\Skvideo\ExpressionLanguage;
 
 use TYPO3\CMS\Core\ExpressionLanguage\AbstractProvider;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

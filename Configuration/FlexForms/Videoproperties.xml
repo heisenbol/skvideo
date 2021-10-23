@@ -16,7 +16,7 @@
 							<label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:videoproviderlabel</label>
 							<config>
 								<type>select</type>
-								<itemsProcFunc>Skar\Skvideo\ItemsProcFunc->user_getVideoTypeList</itemsProcFunc>
+								<itemsProcFunc>Skaras\Skvideo\ItemsProcFunc->user_getVideoTypeList</itemsProcFunc>
 								<renderType>selectSingle</renderType>
 								<items>
 									<numIndex index="0" type="array">

@@ -1,6 +1,6 @@
 <?php
 return [
     'typoscript' => [
-        \Skar\Skvideo\ExpressionLanguage\ConditionProvider::class
+        \Skaras\Skvideo\ExpressionLanguage\ConditionProvider::class
     ]
 ];

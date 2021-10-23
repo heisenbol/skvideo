@@ -1,5 +1,5 @@
 <?php
-namespace Skar\Skvideo;
+namespace Skaras\Skvideo;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Cache\CacheManager;
@@ -83,7 +83,7 @@ class Helper
                 $titles = $this->getTitlesVimeo($code);
             }
             if ($titles && $cacheIdentifier) {
-                $cache->set($cacheIdentifier, $titles, [self::CACHE_TAG], \Skar\Skvideo\ExtensionConfiguration::getSetting('titleslifetime',1209600));
+                $cache->set($cacheIdentifier, $titles, [self::CACHE_TAG], \Skaras\Skvideo\ExtensionConfiguration::getSetting('titleslifetime',1209600));
             }
 
         }
@@ -95,7 +95,7 @@ class Helper
         return $this->retrieveTitles($oembedUrl);
     }
     private function getYoutubeListApiUrl($code) {
-        $apiKey = \Skar\Skvideo\ExtensionConfiguration::getSetting('ytapikey',null);
+        $apiKey = \Skaras\Skvideo\ExtensionConfiguration::getSetting('ytapikey',null);
         if (!$apiKey) { // youtube play list info can only be retrieved via API access, using a google API key for YouTube Data API v3
             $this->log("tx_skvideo youtube play list info can only be retrieved via API access, using a google API key for YouTube Data API v3. Set API key in extension settings");
             return null;
@@ -260,7 +260,7 @@ class Helper
                 return false;
             }
         }
-        $imagesLifeTime = \Skar\Skvideo\ExtensionConfiguration::getSetting('imageslifetime',1209600);
+        $imagesLifeTime = \Skaras\Skvideo\ExtensionConfiguration::getSetting('imageslifetime',1209600);
         if (file_exists($dst) && (filemtime($dst) + $imagesLifeTime > time()) ) { // already downloaded and lifetime has not passed yet
             return true;
         }
