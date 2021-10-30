@@ -35,10 +35,10 @@ class Helper
             \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
             'skvideo'
         );
-        $this->MAX_WIDTH = intval($settings['max_preview_width']);
-        $this->MAX_HEIGHT = intval($settings['max_preview_height']);
-        $this->MAX_HEIGHT = intval($settings['disablerememberme']);
-        $this->MAX_HEIGHT = intval($settings['remembermedays']);
+        $this->MAX_WIDTH = intval($settings['max_preview_width']??0);
+        $this->MAX_HEIGHT = intval($settings['max_preview_height']??0);
+//        $this->MAX_HEIGHT = intval($settings['disablerememberme']??0);
+//        $this->MAX_HEIGHT = intval($settings['remembermedays']??0);
         if ($this->MAX_WIDTH < 100) {
             $this->MAX_WIDTH = 500;
         }
