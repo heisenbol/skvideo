@@ -4,7 +4,6 @@ namespace Skaras\Skvideo;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Cache\CacheManager;
 use \TYPO3\CMS\Extbase\Service\ImageService;
-use \TYPO3\CMS\Extbase\Object\ObjectManager;
 use \TYPO3\CMS\Core\Utility\PathUtility;
 /**
  * Contains a preview rendering for the page module of CType="skvideo_skvideo_ce"
@@ -234,8 +233,7 @@ class Helper
 //    $cObj = $configurationManager->getContentObject();
 //    return $cObj->cObjGetSingle('IMG_RESOURCE', $img['image.']);
 
-        $objectManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
-        $imageService= $objectManager->get(ImageService::class);
+        $imageService = GeneralUtility::makeInstance(ImageService::class);
         $image = $imageService->getImage($absoluteFilePath, null, false);
         $processingInstructions = array(
             'maxWidth' => $maxWidth,

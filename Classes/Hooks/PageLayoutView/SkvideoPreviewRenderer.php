@@ -56,11 +56,11 @@ class SkvideoPreviewRenderer implements PageLayoutViewDrawItemHookInterface
         }
 
         if (!$type) {
-          $itemContent = LocalizationUtility::translate('LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:missingtype', 'skvideo', null, null, null);
+          $itemContent = LocalizationUtility::translate('LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:missingtype', 'skvideo', null, null);
           return;
         }
         if (!$code) {
-          $itemContent = LocalizationUtility::translate('LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:missingcode', 'skvideo', null, null, null);
+          $itemContent = LocalizationUtility::translate('LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:missingcode', 'skvideo', null, null);
           return;
         }
         

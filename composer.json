@@ -4,7 +4,7 @@
   "description": "TYPO3 content element to cache thumbnails of Youtube & Vimeo videos and play them after user confirmation. Options to remember user decision via cookie. Responsive display. Works with and without fluid_styled_content. No other dependencies.",
   "license": "GPL-2.0-or-later",
   "require": {
-    "typo3/cms-core": "^10.4 || ^11.0"
+    "typo3/cms-core": "^12.4"
   },
   "authors": [
     {
@@ -12,6 +12,9 @@
       "role": "Developer"
     }
   ],
+  "support": {
+    "issues": "https://github.com/sksksksk/skvideo/issues"
+  },
   "replace": {
     "typo3-ter/skvideo": "self.version"
   },

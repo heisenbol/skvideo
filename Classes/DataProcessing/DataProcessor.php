@@ -126,7 +126,7 @@ class DataProcessor implements DataProcessorInterface
             $result['disablerememberme'] = $disablerememberme;
             $result['remembermedays'] = $remembermedays;
 
-            $message = LocalizationUtility::translate('message', 'skvideo', null, null, null);
+            $message = LocalizationUtility::translate('message', 'skvideo', null, null);
             if (trim($ceSettings['message']??'')) {
                 $message = trim($ceSettings['message']);
             }
@@ -148,13 +148,13 @@ class DataProcessor implements DataProcessorInterface
             $result['message'] = $message;
 
 
-            $cancel = LocalizationUtility::translate('cancel', 'skvideo', null, null, null);
+            $cancel = LocalizationUtility::translate('cancel', 'skvideo', null, null);
             if (trim($ceSettings['cancel']??'')) {
                 $cancel = trim($ceSettings['cancel']);
             }
             $result['cancel'] = $cancel;
 
-            $continue = LocalizationUtility::translate('continue', 'skvideo', null, null, null);
+            $continue = LocalizationUtility::translate('continue', 'skvideo', null, null);
             if (trim($ceSettings['continue']??'')) {
                 $continue = trim($ceSettings['continue']);
             }
@@ -163,13 +163,13 @@ class DataProcessor implements DataProcessorInterface
             $rememberme = '';
             if (!$disablerememberme) {
                 if ($remembermedays === 0) {
-                    $rememberme = LocalizationUtility::translate('remembermesession', 'skvideo', null, null, null);
+                    $rememberme = LocalizationUtility::translate('remembermesession', 'skvideo', null, null);
                     if (trim($ceSettings['remembermesession']??'')) {
                         $rememberme = trim($ceSettings['remembermesession']);
                     }
                 }
                 else {
-                    $rememberme = LocalizationUtility::translate('rememberme', 'skvideo', [$remembermedays], null, null);
+                    $rememberme = LocalizationUtility::translate('rememberme', 'skvideo', [$remembermedays], null);
                     if (trim($ceSettings['rememberme']??'')) {
                         $rememberme = trim($ceSettings['rememberme']);
                     }

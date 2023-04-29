@@ -7,11 +7,11 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'sk@karasavvidis.gr',
     'state' => 'stable',
     'internal' => '',
-    'clearCacheOnLoad' => 1,
-    'version' => '1.4.4',
+    'clearCacheOnLoad' => true,
+    'version' => '2.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '10.4.0-11.5.99'
+            'typo3' => '12.4.0-12.5.99'
         ],
         'conflicts' => [],
         'suggests' => [],
