@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 // Adds the content element to the "Type" dropdown
 // see https://stackoverflow.com/questions/54789892/best-way-to-register-custom-content-element-to-type-dropdown why it is better to use addTcaSelectItem
 //\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
@@ -17,9 +17,9 @@ defined('TYPO3_MODE') or die();
     'tt_content',
     'CType',
     [
-        'LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:listtypetitle',
-        'skvideo_ce',
-        'skvideo-icon'
+        'label' => 'LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:listtypetitle',
+        'value' => 'skvideo_ce',
+        'icon' => 'skvideo-icon'
     ],
     'textmedia',
     'after'

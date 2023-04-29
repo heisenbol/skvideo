@@ -2,9 +2,9 @@
 namespace Skaras\Skvideo;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use \TYPO3\CMS\Core\Cache\CacheManager;
-use \TYPO3\CMS\Extbase\Service\ImageService;
-use \TYPO3\CMS\Core\Utility\PathUtility;
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Extbase\Service\ImageService;
+use TYPO3\CMS\Core\Utility\PathUtility;
 /**
  * Contains a preview rendering for the page module of CType="skvideo_skvideo_ce"
  */

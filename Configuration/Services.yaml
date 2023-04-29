@@ -1,0 +1,19 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Skaras\Skvideo\:
+    resource: '../Classes/*'
+    exclude:
+      - '../Classes/Domain/Model/*'
+      - '../Classes/DataProcessing/*'
+      - '../Classes/ExpressionLanguage/*'
+      - '../Classes/*.php'
+
+  Skaras\Skvideo\Backend\EventListener\SkvideoEventListener:
+    public: true
+    tags:
+      - name: event.listener
+        identifier: 'skvideo/skvideo_ce'

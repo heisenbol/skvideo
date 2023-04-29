@@ -6,13 +6,12 @@
 	 <sheets>
 		 <sDEF>
 			 <ROOT>
-                <TCEforms>
+                
                     <sheetTitle>Options</sheetTitle>
-                </TCEforms>
+                
 			 	<type>array</type>
 				 <el>
 					<settings.type>
-						<TCEforms>
 							<label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:videoproviderlabel</label>
 							<config>
 								<type>select</type>
@@ -25,10 +24,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.type>
 					<settings.sizeratio>
-						<TCEforms>
 							<label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:sizeratiolabel</label>
 							<config>
 								<type>select</type>
@@ -44,56 +41,44 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.sizeratio>
 					<settings.includetitles>
-						<TCEforms>
 							<label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:includetitleslabel</label>
 							<config>
 								<type>check</type>
 								<default>1</default>
 							</config>
-						</TCEforms>
 					</settings.includetitles>
 					<settings.overridetitle>
-						<TCEforms>
 							<label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:overridetitlelabel</label>
 							<config>
 								<type>input</type>
 								<default></default>
 							</config>
-						</TCEforms>
 					</settings.overridetitle>
 					 <settings.startat>
-						 <TCEforms>
 							 <label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:startatlabel</label>
 							 <config>
-								 <type>input</type>
+								 <type>number</type>
 								 <size>6</size>
-								 <eval>int</eval>
 								 <default>0</default>
 							 </config>
-						 </TCEforms>
 					 </settings.startat>
 
 					<settings.maxwidth>
-						<TCEforms>
 							<label>LLL:EXT:skvideo/Resources/Private/Language/locallang_be.xlf:maxwidthlabel</label>
 							<config>
-								<type>input</type>
+								<type>number</type>
 								<size>6</size>
-								<eval>int</eval>
 								<!--<range>
 									<lower>100</lower>
 								</range>-->
 								<default></default>
 							</config>
-						</TCEforms>
 					</settings.maxwidth>
 				 </el>
 			 </ROOT>
 		</sDEF>
-
 	</sheets>
  </T3DataStructure>
  
