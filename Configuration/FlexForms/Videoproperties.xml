@@ -32,12 +32,12 @@
 								<renderType>selectSingle</renderType>
 								<items>
 									<numIndex index="0" type="array">
-										<numIndex index="0">4:3</numIndex>
-										<numIndex index="1">43</numIndex>
-									</numIndex>
-									<numIndex index="1" type="array">
 										<numIndex index="0">16:9</numIndex>
 										<numIndex index="1">169</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">4:3</numIndex>
+										<numIndex index="1">43</numIndex>
 									</numIndex>
 								</items>
 							</config>
