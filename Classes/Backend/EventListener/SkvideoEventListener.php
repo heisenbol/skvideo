@@ -72,7 +72,7 @@ final class SkvideoEventListener
                 $platformLink = "https://vimeo.com/".htmlspecialchars($code);
             }
 
-            $fluidTmplFilePath = GeneralUtility::getFileAbsFileName('typo3conf/ext/skvideo/Resources/Private/Templates/BePreviewTemplate.html');
+            $fluidTmplFilePath = GeneralUtility::getFileAbsFileName('EXT:skvideo/Resources/Private/Templates/BePreviewTemplate.html');
             $fluidTmpl = GeneralUtility::makeInstance('TYPO3\CMS\Fluid\View\StandaloneView');
             $fluidTmpl->setTemplatePathAndFilename($fluidTmplFilePath);
             $fluidTmpl->assign('title', $title);
