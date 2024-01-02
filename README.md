@@ -18,9 +18,13 @@ If the user confirms, the video is played. In case the user had checked the chec
 
 
 ## How to install
-The content element needs css_styled_content or fluid_styled_content in order to work. So one of these extensions must be enabled on your site.
+**Prerequisites:** The content element needs css_styled_content or fluid_styled_content in order to work. So one of these extensions must be enabled on your site.
 
-Additionally, the SK Video static template must have been included into your TYPO3 template.
+- Install the extension in you extension manager or vie composer.
+
+- In the module menu to the left navigate to Admin Tools > Maintanance, then click on Analyze database and create all. This will create additional database tables needed by the extension.
+
+- Add the SK Video static template into your site template.
 
 ## Configuration
 ### Preview Image size
