@@ -159,28 +159,7 @@ class Helper
     }
 
     public function getCustomPreviewImagePath($fileRef, $context) {
-        return $fileRef->getForLocalProcessing();
-//    $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-//    $imageService= $objectManager->get(ImageService::class);
-//    $cropString = $fileRef->getProperty('crop');
-//    $cropVariantCollection = \TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection::create($cropString);
-//    $cropArea = $cropVariantCollection->getCropArea('default');
-//    if ($context === self::CONTEXT_FE) {
-//      // https://rolf-thomas.de/how-to-generate-images-in-a-typo3-extbase-controller
-//      //$imagePath = $fileRef->getOriginalFile()->getPublicUrl();
-//      $processedImage = $imageService->applyProcessingInstructions(
-//          $fileRef,
-//            [
-//              'maxWidth' => $this->MAX_WIDTH,
-//              'maxHeight' => $this->MAX_HEIGHT,
-//              'crop' => $cropArea->isEmpty() ? null : $cropArea->makeAbsoluteBasedOnFile($fileRef)
-//            ]
-//          );
-//      return $imageService->getImageUri($processedImage);
-//    }
-//    else {
-//      return $fileRef->getOriginalFile()->getPublicUrl();
-//    }
+        return $fileRef->getForLocalProcessing(false);
     }
 
     private function getPreviewImagePathYoutube($code, $context) {
