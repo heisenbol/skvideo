@@ -1,0 +1,13 @@
+mod.wizards.newContentElement.wizardItems.common {
+    elements {
+        skvideo_ce {
+            iconIdentifier = skvideo-icon
+            title = SK Youtube/Vimeo  Video
+            description = Embed a Youtube/Vimeo Video
+            tt_content_defValues {
+                CType = skvideo_ce
+            }
+        }
+    }
+    show := addToList(skvideo_ce)
+}

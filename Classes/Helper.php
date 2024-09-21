@@ -271,7 +271,8 @@ class Helper
             $file = @file_get_contents($url[2]);
         }
         if ($file === FALSE) {
-            $this->log("tx_skvideo could not retrieve video thumb from url(s) ".print_r($url,true));
+            // $http_response_header will be of the last request (3rd url)
+            $this->log("tx_skvideo could not retrieve video thumb from url(s) ".print_r($url,true).print_r($http_response_header,true));
             return false;
         }
         $saveResult = file_put_contents($dst, $file);
