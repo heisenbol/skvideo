@@ -19,8 +19,8 @@
 								<renderType>selectSingle</renderType>
 								<items>
 									<numIndex index="0" type="array">
-										<numIndex index="0"></numIndex>
-										<numIndex index="1"></numIndex>
+										<label></label>
+										<value></value>
 									</numIndex>
 								</items>
 							</config>
@@ -32,12 +32,12 @@
 								<renderType>selectSingle</renderType>
 								<items>
 									<numIndex index="0" type="array">
-										<numIndex index="label">16:9</numIndex>
-										<numIndex index="value">169</numIndex>
+										<label>16:9</label>
+										<value>169</value>
 									</numIndex>
 									<numIndex index="1" type="array">
-										<numIndex index="label">4:3</numIndex>
-										<numIndex index="value">43</numIndex>
+										<label>4:3</label>
+										<value>43</value>
 									</numIndex>
 								</items>
 							</config>
