@@ -1,34 +1,34 @@
 # skvideo
-TYPO3 content element to cache thumbnails of youtube/vimeo videos and play them after user confirmation. Responsive display. Works with or without fluid_styled_content. No other dependencies (no jquery etc).
+TYPO3 content element to cache thumbnails of YouTube/Vimeo videos and play them after user confirmation. Responsive display. Works with or without fluid_styled_content. No other dependencies (no jquery etc.).
 
 ## How it works
 The **editor** inserts a skvideo content element into a page. He needs to specify
-* the youtube/vimeo video code
-* the type of the video (youtube or vimeo)
+* the YouTube/Vimeo video code
+* the type of the video (YouTube or Vimeo)
 * whether to include the video title embedded in the preview image
 * the width vs height ratio (16:9 or 4:3)
 * optionally set a maximum width of the video on the page (otherwise it defaults to full width display)
 
 
-The **end user** visits the page. The plugin fetches and stores a copy of the video thumbnail on the server. So the user's browser downloads the thumbnail from the site server, and not from the video provider. 
+The **end user** visits the page. The plugin fetches and stores a copy of the video thumbnail on the server. So the user's browser downloads the thumbnail from your site and not from the video provider. 
 
-If the user presses the play button of the video, he is being presented with a customizable notice and is asked to confirm that he wants to play the video. Optionally, the user can check a checkbox to store his decision via a cookie for 30 days. Separate cookies for Youtube and Vimeo are used.
+If the user presses the play button of the video, he is being presented with a customizable notice and is asked to confirm that he wants to play the video. Optionally, the user can check a checkbox to store his decision via a cookie for 30 days. Separate cookies for YouTube and Vimeo are used.
 
 If the user confirms, the video is played. In case the user had checked the checkbox to store his decission, the video is played without the notice.
 
 
 ## How to install
-**Prerequisites:** The content element needs css_styled_content or fluid_styled_content in order to work. So one of these extensions must be enabled on your site.
+**Prerequisites:** The content element needs fluid_styled_content in order to work. 
 
-- Install the extension in you extension manager or vie composer.
+- Install the extension in your extension manager or via composer.
 
-- In the module menu to the left navigate to Admin Tools > Maintanance, then click on Analyze database and create all. This will create additional database tables needed by the extension.
+- In the module menu to the left navigate to System > Maintanance, then click on Analyze database and create all. This will create additional database tables needed by the extension.
 
 - Add the SK Video static template into your site template.
 
 ## Configuration
 ### Preview Image size
-Preview images that are retrieved from Youtube or Vimeo are resized to a max of 500x500 pixel. You can change this size via constants. For example, to resize to 700x600 pixel:
+Preview images that are retrieved from YouTube or Vimeo are resized to a max of 500x500 pixel. You can change this size via constants. For example, to resize to 700x600 pixel:
 
 `plugin.tx_skvideo.settings.max_preview_width = 700`
 
@@ -36,7 +36,7 @@ Preview images that are retrieved from Youtube or Vimeo are resized to a max of 
 
 ### CSS
 The extension comes with a default css file located at Resources/Public/Css/styles.css. If you want to adapt it, you copy it 
-and include your changed version in your site. In this case, you can instruct the extension to not include it's own css file via a constant:
+and include your changed version in your site. In this case, you can instruct the extension to not include its own css file via a constant:
 
 `plugin.tx_skvideo.settings.nocss = 1`
 

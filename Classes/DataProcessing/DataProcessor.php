@@ -83,11 +83,11 @@ class DataProcessor implements DataProcessorInterface
             }
             $result['maxWidth'] = $maxWidth;
 
-            if ($ratio == 169) {
+            if ($ratio === 169) {
                 $embedWidth = 560;
                 $embedHeight = 315;
             }
-            else if ($ratio == 43) {
+            else { //  if ($ratio === 43)
                 $embedWidth = 400;
                 $embedHeight = 300;
             }
